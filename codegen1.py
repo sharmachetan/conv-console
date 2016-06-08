@@ -299,19 +299,22 @@ class reader:
 		size={}
 		start=[]
 		n=0
-		for x in range(len(st)):
-			
-			
-			if st[x] == "1":
-
-				start.append(x)
-			else:
+		try:
+			for x in range(len(st) + 1):
 				
-				size[n]=start
-				n=n+1
-				start = []
+				
+				if st[x] == "1":
 
-		
+					start.append(x)
+				else:
+					
+					size[n]=start
+					n=n+1
+					start = []
+
+		except IndexError:
+			
+			size[n]=start
 
 		for y in range(len(size)):
 			if len(size[y]) == 0:
@@ -340,37 +343,37 @@ class reader:
 obj = reader('cif.txt')
 name = obj.name
 op = obj.file_in_list('cif.txt')
-ct = obj.calculate_lines(name)
-eg = obj.file_list[6]
-print(obj.locate_byte(10))
-mm = memoryview(b'eg')
+# ct = obj.calculate_lines(name)
+# eg = obj.file_list[6]
+# print(obj.locate_byte(10))
+# mm = memoryview(b'eg')
 
-print(type(eg))
-print(mm)
-bb=bytes(mm[1])
-# print(bb)
+# print(type(eg))
+# print(mm)
+# bb=bytes(mm[1])
+# # print(bb)
 
-#This is the way to slice the string. As strings are nothning 
-#but sequence of characters in python. 
-print(eg[2])
-print(ct)
+# #This is the way to slice the string. As strings are nothning 
+# #but sequence of characters in python. 
+# print(eg[2])
+# print(ct)
 
 
 
-aaa = obj.get_dollar_pos(11)
-print("This is dollar funct",aaa)
+# aaa = obj.get_dollar_pos(11)
+# print("This is dollar funct",aaa)
 
-xxx = obj.get_element_pos_length(11)
-print("This is get_element_pos",xxx)
+# xxx = obj.get_element_pos_length(11)
+# print("This is get_element_pos",xxx)
 
-abc = obj.get_element_prop(0)
-print("this sis get_element_prop funct",abc)
+# abc = obj.get_element_prop(0)
+# print("this sis get_element_prop funct",abc)
 
-badas = obj.get_input_element_length(11)
+badas = obj.get_input_element_length(10)
 print("this is badass",badas)
 
 
-abcd = obj.get_element_name(11)
+abcd = obj.get_element_name(10)
 print("this sis get_element_name",abcd)
 print()
 
