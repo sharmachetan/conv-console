@@ -1,0 +1,24 @@
+$05/23/2016$ $02.26$          $CUSTOMER INFORMATION - TDB$                     $CVCIFA$
+                                    $NORMAL$                                      
+                                                                                
+$MAINTENANCE:$ - $(A=ADD, C=CHANGE, S=SHOW, D=DELETE, K=COPY, M=MERGE)$            
+$SCREEN:$                                                                        
+$CUSTOMER NUMBER:$___________________$                                          
+                                                                                
+      $LAST:$_____                                                               
+     $FIRST:$______                                    $DO NOT CALL:$               
+     $ALIAS:$_____                                 $MEMBER DATE:$
+__   _____     $TITLE:$______                                     $BIRTHDATE:$_____
+     $DESIGNATN:$ ___________                                        $SEX:$ _ __            
+    $STATUS:$_______ $NORMAL$             $DT:$                $PRIVACY OPT:$- $IN$          
+    $SUFFIX:$                                              $SSN/SIN:$-              
+                                                        $LANGUAGE:$-             
+ $CUST TYPE:$ ___________ $TRADITIONAL LIFE CUSTOMER$            $DECEASED DT:$               
+ $HOUSEHOLD:$ ______________                                               
+                                 $PRF ADDR:$-- $PRIMARY$                           
+                                                                                
+                                                                                
+ $CUSTOMER CREATED DATE:$ 08/17/2015 $LAST MAINT BY:$ CSC  ON: 05/23/2016 AT: 01.50 
+ $PF=    PF1=NXT CUST PF3=HOUSEHOLD PF5=CUST NOTE PF7=ACTIVITY PF9=CLR  PF11=CALL$
+        $PF2=PRV CUST PF4=RET MAIL  PF6=PLCY      PF8=NEW BUSN PF10=COR$          
+                                                                                
