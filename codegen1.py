@@ -171,8 +171,8 @@ class reader:
 			v = list(v)[0]
 			end=k+v
 			start=k
-			name = a[k+1:k+v]
-			self.file_element_table[n]={name}
+			name = a[k:end]
+			self.file_element_table[start]={name}
 			n=n+1
 		return self.file_element_table
 
@@ -196,7 +196,7 @@ class reader:
 			low_k=2*x
 			value=self.get_dollar_pos(l_number)
 			result=(value[high_k]-value[low_k] - 1)
-			position_length[element_pos[2*x]] = {result}
+			position_length[element_pos[2*x]+1] = {result}
 
 		return position_length
 # Function Finds input value '_' inside the line.
