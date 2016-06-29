@@ -191,7 +191,7 @@ class MainWindow(QMainWindow):
       MS_COLOR.setText(1,self.V_MS_COLOR)
 
       
-
+      global MS_HIGHLIGHT
       MS_HIGHLIGHT= QTreeWidgetItem(root_profile,["Highlight"])
       MS_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_HIGHLIGHT.setText(1,self.V_MS_HIGHLIGHT)
@@ -265,11 +265,134 @@ class MainWindow(QMainWindow):
    def pressed_run(self):
       print('print Pressed')
       aa = self.get_mp_highlight()
-      print(aa)
+      bb = self.get_mp_name()
+      cc = self.get_mp_line()
+      d = self.get_mp_size()
+      e = self.get_mp_justify()
 
+      g =self.get_mp_tioapfx()
+      h = self.get_mp_ctrl()
+      
+      j = self.get_mp_color()
+      print(j)
+      
+      print(h) 
+      print(g)
+      
+      print(e)
+      print(d)
+      print(aa)
+      print(bb)
+      print(cc)
+
+
+
+#***************************Getters for Map set***********
+
+#Get Values of Item Name of Map Set
+   def get_ms_name(self):
+      text = MS_NAME.text(1)
+      return text
+#Get Values of Item Mode of Map Set
+   def get_ms_mode(self):
+      text = MS_MODE.text(1)
+      return text 
+
+#Get Values of Item Lang of Map Set
+   def get_ms_lang(self):
+      text = MS_LANG.text(1)
+      return text
+#Get Values of Item Storage of Map Set
+   def get_ms_storage(self):
+      text = MS_STORAGE.text(1)
+      return text
+#Get Values of Item Ctrl of Map Set
+   def get_ms_ctrl(self):
+      text = MS_CTRL.text(1)
+      return text
+#Get Values of Item term of Map Set
+   def get_ms_term(self):
+      text = MS_TERM.text(1)
+      return text
+#Get Values of Item Tioapfx of Map Set
+   def get_ms_tioapfx(self):
+      text = MS_TIOAPFX.text(1)
+      return text
+#Get Values of Item Mapatts of Map Set
+   def get_ms_mapatts(self):
+      text = MS_MAPATTS.text(1)
+      return text
+#Get Values of Item Color of Map Set
+   def get_ms_color(self):
+      text = MS_COLOR.text(1)
+      return text
+#Get Values of Item Storage of Map Set
+   def get_ms_storage(self):
+      text = MS_STORAGE.text(1)
+      return text
+
+#Get Values of Item Term of Map Set
+   def get_ms_term(self):
+      text = MS_TERM.text(1)
+      return text
+#Get Values of Item Highlight of Map Set
+   def get_ms_highlight(self):
+      text = MS_HIGHLIGHT.text(1)
+      return text
+
+#*******************************************
+
+#***************************Getters for Map ***********
+
+#Get Values of Item Name of Map 
+   def get_mp_name(self):
+      text = MP_NAME.text(1)
+      return text
+#Get Values of Item Line of Map 
+   def get_mp_line(self):
+      text = MP_LINE.text(1)
+      return text 
+
+#Get Values of Item Size of Map 
+   def get_mp_size(self):
+      text = MP_SIZE.text(1)
+      return text
+#Get Values of Item Column of Map 
+   def get_mp_column(self):
+      text = MP_COLUMN.text(1)
+      return text
+#Get Values of Item Ctrl of Map 
+   def get_mp_ctrl(self):
+      text = MP_CTRL.text(1)
+      return text
+#Get Values of Item Justify of Map
+   def get_mp_justify(self):
+      text = MP_JUSTIFY.text(1)
+      return text
+#Get Values of Item Tioapfx of Map 
+   def get_mp_tioapfx(self):
+      text = MP_TIOAPFX.text(1)
+      return text
+#Get Values of Item Mapatts of Map Set
    def get_mp_highlight(self):
       text = MP_HIGHLIGHT.text(1)
-      return text      
+      return text
+#Get Values of Item Color of Map
+   def get_mp_color(self):
+      text = MP_COLOR.text(1)
+      return text
+
+
+#Get Values of Item Term of Map Set
+   def get_ms_term(self):
+      text = MS_TERM.text(1)
+      return text
+#Get Values of Item Highlight of Map Set
+   def get_ms_highlight(self):
+      text = MS_HIGHLIGHT.text(1)
+      return text
+
+#*******************************************
 
    def editor(self):
       textEdit = QTextEdit()
