@@ -76,8 +76,10 @@ class MainWindow(QMainWindow):
       file.addAction("Tiled")
       file.addAction("Quit")
 
+
       run = QAction(QIcon("D:\work\projects\conv-console\_run_icon"),"Stage",self)
       tb.addAction(run)
+      tb.actionTriggered[QAction].connect(self.pressed_run)
 
       view.addAction("Property Window")
 
@@ -133,9 +135,9 @@ class MainWindow(QMainWindow):
       MS_TYPE = QTreeWidgetItem(root_profile,["Type"])
       MS_TYPE.setCheckState(1,Qt.Checked)
       MS_TYPE.setText(1,self.V_MS_TYPE)
-      MS_NAME =QTreeWidgetItem(root_profile,["Name"])
       
-      global MS_TYPE
+      global MS_NAME
+      MS_NAME =QTreeWidgetItem(root_profile,["Name"])
       MS_NAME.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_NAME.setText(1,self.V_MS_NAME)
 
@@ -188,9 +190,7 @@ class MainWindow(QMainWindow):
       MS_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_COLOR.setText(1,self.V_MS_COLOR)
 
-      global MS_TERM
-      MS_TERM.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MS_TERM.setText(1,"TERMINAL")
+      
 
       MS_HIGHLIGHT= QTreeWidgetItem(root_profile,["Highlight"])
       MS_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
@@ -263,6 +263,8 @@ class MainWindow(QMainWindow):
    
 
 
+   def pressed_run(self):
+      print('print Pressed')
 
 
    def editor(self):
@@ -379,6 +381,7 @@ def main():
    linex.pp()
 
    read.file_in_list('cif.txt')
+
 
    ex = MainWindow()
 

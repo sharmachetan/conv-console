@@ -322,7 +322,7 @@ class reader:
 
 		for z in size.values():
 			length = max(z) - min(z) +1
-			print(length)
+			
 
 		#Iterarting over keys to store value in dictionary.
 
@@ -369,16 +369,22 @@ op = obj.file_in_list('cif.txt')
 # abc = obj.get_element_prop(0)
 # print("this sis get_element_prop funct",abc)
 
-badas = obj.get_input_element_length(10)
-print("this is badass",badas)
-
-
+obj.get_input_element_length(10)
+# print("this is badass",badas)
+print("**********************************************")
+print("")
+print("")
+ggg = obj.get_element_pos_length(10)
+print("***Element pos-length dic",ggg)
+print("")
 abcd = obj.get_element_name(10)
-print("this sis get_element_name",abcd)
-print()
+print("***this sis get_element_name",abcd)
+print("")
 
 print("***",obj.input_element_position_length)
 
+rr = obj.calculate_lines(name)
+print("no. of lines",rr)
 try:
 	var=obj.file_list[2]
 	# bfr = buffer(var,1,3)
