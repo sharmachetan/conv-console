@@ -249,8 +249,7 @@ class MainWindow(QMainWindow):
       self.set_field_properties(root_map,2)
     
       linex.set_field_properties(root_map,4)
-      linex2.set_field_properties(root_map,5)
-
+ 
       
 
 
@@ -265,7 +264,12 @@ class MainWindow(QMainWindow):
 
    def pressed_run(self):
       print('print Pressed')
+      aa = self.get_mp_highlight()
+      print(aa)
 
+   def get_mp_highlight(self):
+      text = MP_HIGHLIGHT.text(1)
+      return text      
 
    def editor(self):
       textEdit = QTextEdit()
