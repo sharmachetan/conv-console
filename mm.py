@@ -1,14 +1,14 @@
 import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-import codegen1 
-import line 
+import codegen1
+import line
 
 
 class MainWindow(QMainWindow):
    count = 0
-   
-   
+
+
    V_MS_TYPE="SYS"
    V_MS_NAME = " ada "
    V_MS_MODE = ""
@@ -45,14 +45,14 @@ class MainWindow(QMainWindow):
    V_MF_OCCURS = ""
 
 
-  
 
-   
+
+
    def __init__(self, parent = None):
       super(MainWindow, self).__init__(parent)
 
-      self.setStyleSheet("""QToolTip { 
-                           background-color: yellow; 
+      self.setStyleSheet("""QToolTip {
+                           background-color: yellow;
                            color: black;
                            opacity: 1;
                            border: black solid 1px;
@@ -63,7 +63,8 @@ class MainWindow(QMainWindow):
       self.setCentralWidget(self.mdi)
       bar = self.menuBar()
       tb = self.addToolBar("Run")
-      
+      stg = self.addToolBar("Stage Code")
+
       file = bar.addMenu("File")
       view = bar.addMenu("Views")
       help = bar.addMenu("Help")
@@ -77,7 +78,11 @@ class MainWindow(QMainWindow):
       file.addAction("Quit")
 
 
-      run = QAction(QIcon("D:\work\projects\conv-console\_run_icon"),"Stage",self)
+      run = QAction(QIcon("D:\work\projects\conv-console\_run_icon"),"Generate Code",self)
+
+      stgg = QAction(QIcon("I:\jectPro\conv-console\stage.bmp"),"Stage Code",self)
+      stg.addAction(stgg)
+      stg.actionTriggered[QAction].connect(self.stage_code)
       tb.addAction(run)
       tb.actionTriggered[QAction].connect(self.pressed_run)
 
@@ -94,17 +99,17 @@ class MainWindow(QMainWindow):
 
    def windowaction(self, q):
       print ("triggered")
-      
+
       if q.text() == "New":
          MainWindow.count = MainWindow.count+1
          sub = QMdiSubWindow()
          sub.setWidget(QTextEdit())
          sub.setWindowTitle("subwindow"+str(MainWindow.count))
          self.mdi.addSubWindow(sub)
-         
+
          self.mdi.cascadeSubWindows()
          sub.show()
-         
+
       if q.text() == "cascade":
          self.mdi.cascadeSubWindows()
       if q.text() == "Tiled":
@@ -135,7 +140,7 @@ class MainWindow(QMainWindow):
       MS_TYPE = QTreeWidgetItem(root_profile,["Type"])
       MS_TYPE.setCheckState(1,Qt.Checked)
       MS_TYPE.setText(1,self.V_MS_TYPE)
-      
+
       global MS_NAME
       MS_NAME =QTreeWidgetItem(root_profile,["Name"])
       MS_NAME.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
@@ -145,7 +150,7 @@ class MainWindow(QMainWindow):
       MS_MODE=QTreeWidgetItem(root_profile,["Mode"])
       MS_MODE.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_MODE.setText(1,self.V_MS_MODE)
-     
+
       MS_MODE.setToolTip(1,"tooltip")
 
       combo = QComboBox()
@@ -179,7 +184,7 @@ class MainWindow(QMainWindow):
       global MS_TIOAPFX
       MS_TIOAPFX= QTreeWidgetItem(root_profile,["Tioapfx"])
       MS_TIOAPFX.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
-      
+
       global MS_MAPATTS
       MS_MAPATTS= QTreeWidgetItem(root_profile,["Mapatts"])
       MS_MAPATTS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
@@ -190,7 +195,7 @@ class MainWindow(QMainWindow):
       MS_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_COLOR.setText(1,self.V_MS_COLOR)
 
-      
+
       global MS_HIGHLIGHT
       MS_HIGHLIGHT= QTreeWidgetItem(root_profile,["Highlight"])
       MS_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
@@ -247,10 +252,10 @@ class MainWindow(QMainWindow):
       MP_HIGHLIGHT.setText(1,self.V_MP_HIGHLIGHT)
 
       self.set_field_properties(root_map,2)
-    
+
       linex.set_field_properties(root_map,4)
- 
-      
+
+
 
 
 
@@ -258,10 +263,11 @@ class MainWindow(QMainWindow):
 
       prop.show()
 
-# Run Function to start processing the file. 
-   
+# Run Function to start processing the file.
 
 
+   def stage_code(self):
+       print('code staged')
    def pressed_run(self):
       print('print Pressed')
       aa = self.get_mp_highlight()
@@ -272,18 +278,20 @@ class MainWindow(QMainWindow):
 
       g =self.get_mp_tioapfx()
       h = self.get_mp_ctrl()
-      
+
       j = self.get_mp_color()
       print(j)
-      
-      print(h) 
+
+      print(h)
       print(g)
-      
+
       print(e)
       print(d)
       print(aa)
       print(bb)
       print(cc)
+      print("setting value")
+      linex.set_mf_init("xXXXX")
 
 
 
@@ -296,7 +304,7 @@ class MainWindow(QMainWindow):
 #Get Values of Item Mode of Map Set
    def get_ms_mode(self):
       text = MS_MODE.text(1)
-      return text 
+      return text
 
 #Get Values of Item Lang of Map Set
    def get_ms_lang(self):
@@ -344,24 +352,24 @@ class MainWindow(QMainWindow):
 
 #***************************Getters for Map ***********
 
-#Get Values of Item Name of Map 
+#Get Values of Item Name of Map
    def get_mp_name(self):
       text = MP_NAME.text(1)
       return text
-#Get Values of Item Line of Map 
+#Get Values of Item Line of Map
    def get_mp_line(self):
       text = MP_LINE.text(1)
-      return text 
+      return text
 
-#Get Values of Item Size of Map 
+#Get Values of Item Size of Map
    def get_mp_size(self):
       text = MP_SIZE.text(1)
       return text
-#Get Values of Item Column of Map 
+#Get Values of Item Column of Map
    def get_mp_column(self):
       text = MP_COLUMN.text(1)
       return text
-#Get Values of Item Ctrl of Map 
+#Get Values of Item Ctrl of Map
    def get_mp_ctrl(self):
       text = MP_CTRL.text(1)
       return text
@@ -369,7 +377,7 @@ class MainWindow(QMainWindow):
    def get_mp_justify(self):
       text = MP_JUSTIFY.text(1)
       return text
-#Get Values of Item Tioapfx of Map 
+#Get Values of Item Tioapfx of Map
    def get_mp_tioapfx(self):
       text = MP_TIOAPFX.text(1)
       return text
@@ -396,25 +404,25 @@ class MainWindow(QMainWindow):
 
    def editor(self):
       textEdit = QTextEdit()
-      self.setCentralWidget(textEdit)  
+      self.setCentralWidget(textEdit)
 
    def open_file(self):
       print("opening file")
       filename = ""
       filename = QFileDialog.getOpenFileName(self,'Open File')
 
-      
+
 
       if filename:
          with open(filename,"rt") as file:
             text = file.read()
-            
-      textEdit = QTextEdit()            
+
+      textEdit = QTextEdit()
       open_sub = QMdiSubWindow()
       open_sub.setWidget(textEdit)
       open_sub.setWindowTitle(filename)
       self.mdi.addSubWindow(open_sub)
-      textEdit.setText(text)  
+      textEdit.setText(text)
       self.mdi.cascadeSubWindows()
       open_sub.show()
 
@@ -497,15 +505,15 @@ class MainWindow(QMainWindow):
 
 
 
-   
+
 def main():
    global linex,linex2
    linex2 = line.line()
- 
+
    linex = line.line()
    app = QApplication(sys.argv)
    read = codegen1.reader('cif.txt')
-   linex.pp()
+   # linex.pp()
 
    read.file_in_list('cif.txt')
 
@@ -518,8 +526,8 @@ def main():
    if total_file_lines >80 :
       print("OOPs! Mainframe can't handle more than 80 lines.")
    else:
-      
-            
+
+
          ggg = read.get_element_pos_length(10)
 
 
@@ -530,14 +538,13 @@ def main():
    print(ggg[16])
 
 
- 
+
    ex.show()
 
 
    sys.exit(app.exec_())
 
 
-   
+
 if __name__ == '__main__':
    main()
-

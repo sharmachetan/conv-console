@@ -84,24 +84,24 @@ class line():
 	    MF_OCCURS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
 	    MF_OCCURS.setText(1,self.V_MF_OCCURS)
 
-#Get Values of Item Line position of Line field 
+#Get Values of Item Line position of Line field
    def get_mf_line_pos(self):
       text = MF_LINE_POS.text(1)
       return text
 #Get Values of Item Line Column no. of Line Field
-   def get_mf_line(self):
+   def get_mf_line_column(self):
       text = MF_LINE_COLUMN.text(1)
-      return text 
+      return text
 
-#Get Values of Item Size of length of field 
+#Get Values of Item Size of length of field
    def get_mf_length(self):
       text = MF_LENGTH.text(1)
       return text
-#Get Values of Item Column of Initialize field. 
+#Get Values of Item Column of Initialize field.
    def get_mf_init(self):
       text = MF_INIT.text(1)
       return text
-#Get Values of Item Ctrl of Justify the field 
+#Get Values of Item Ctrl of Justify the field
    def get_mf_justify(self):
       text = MF_JUSTIFY.text(1)
       return text
@@ -109,7 +109,7 @@ class line():
    def get_mf_attrb(self):
       text = MF_ATTRB.text(1)
       return text
-#Get Values of Item color of field. 
+#Get Values of Item color of field.
    def get_mf_color(self):
       text = MF_COLOR.text(1)
       return text
@@ -130,3 +130,17 @@ class line():
    def get_mf_occurs(self):
       text = MF_OCCURS.text(1)
       return text
+
+#***********************Setters of Field******************
+#Set Values of Item Name of field
+   def set_mf_init(self,field_name):
+       self.V_MF_INIT = field_name
+       MF_INIT.setText(1,self.V_MF_INIT)
+#Set Value of Item Line-Position of Field.
+   def set_mf_line_pos(self,field_name):
+      self.V_MF_LINE_POS = field_name
+      MF_INIT.setText(1,self.V_MF_LINE_POS)
+#Set Value of Item Line-Column of Field
+   def set_mf_init(self,field_name):
+       self.V_MF_LINE_COLUMN = field_name
+       MF_INIT.setText(1,self.V_MF_LINE_COLUMN)
