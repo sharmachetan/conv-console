@@ -76,7 +76,7 @@ class MainWindow(QMainWindow):
       file.addAction("Tiled")
       file.addAction("Quit")
 
-      run = QAction(QIcon("lrun.bmp"),"Stage",self)
+      run = QAction(QIcon("D:\work\projects\conv-console\_run_icon"),"Stage",self)
       tb.addAction(run)
 
       view.addAction("Property Window")
@@ -247,7 +247,9 @@ class MainWindow(QMainWindow):
       MP_HIGHLIGHT.setText(1,self.V_MP_HIGHLIGHT)
 
       self.set_field_properties(root_map,2)
-      self.set_field_properties_1(root_map,3)
+    
+      linex.set_field_properties(root_map,4)
+      linex2.set_field_properties(root_map,5)
 
       
 
@@ -365,259 +367,12 @@ class MainWindow(QMainWindow):
       MF_OCCURS.setText(1,self.V_MF_OCCURS)
 
 
-   def set_field_properties_1(self,WIDGET,LINE_NO):
 
-
-      line_no = 'Line : {number}'.format(number = LINE_NO)
-
-      root_line=QTreeWidgetItem(WIDGET,[line_no])
-
-      global MF_LINE_POS
-      global MF_LINE_COLUMN
-      global MF_LENGTH
-      global MF_INIT
-      global MF_JUSTIFY
-      global MF_ATTRB
-      global MF_HIGHLIGHT
-      global MF_COLOR
-      global MF_PICIN
-      global MF_PICOUT
-      global MF_OCCURS
-
-
-      global V_MF_LINE_POS 
-      global V_MF_LINE_COLUMN
-      global V_MF_LENGTH
-      global V_MF_INIT 
-      global V_MF_JUSTIFY
-      global V_MF_ATTRB 
-      global V_MF_COLOR
-      global V_MF_HIGHLIGHT
-      global V_MF_PICIN 
-      global V_MF_PICOUT 
-      global V_MF_OCCURS 
-      global V_MF_LINE_POS 
-      global V_MF_LINE_COLUMN 
-      global V_MF_LENGTH  
-      global V_MF_INIT 
-      global V_MF_JUSTIFY
-      global V_MF_ATTRB
-      global V_MF_COLOR
-      global V_MF_HIGHLIGHT 
-      global V_MF_PICIN 
-      global V_MF_PICOUT
-      global V_MF_OCCURS
-
-      V_MS_TYPE_1="SYS"
-      V_MS_NAME_1 = " ada "
-      V_MS_MODE_1 = ""
-      V_MS_LANG_1 =""
-      V_MS_STORAGE_1 = ""
-      V_MS_CTRL_1 = ""
-      V_MS_TERM_1 = ""
-      V_MS_TIOAPFX_1 = ""
-      V_MS_MAPATTS_1 = ""
-      V_MS_COLOR_1 = ""
-      V_MS_TERM_1 = ""
-      V_MS_HIGHLIGHT_1 = ""
-
-      V_MP_NAME_1=""
-      V_MP_LINE_1 = ""
-      V_MP_SIZE_1 = ""
-      V_MP_COLUMN_1 = ""
-      V_MP_JUSTIFY_1 = ""
-      V_MP_CTRL_1 =""
-      V_MP_TIOAPFX_1 = ""
-      V_MP_COLOR_1 = ""
-      V_MP_HIGHLIGHT_1 = ""
-
-      V_MF_LINE_POS_1 = ""
-      V_MF_LINE_COLUMN_1 = ""
-      V_MF_LENGTH_1 = ""
-      V_MF_INIT_1 = ""
-      V_MF_JUSTIFY_1=""
-      V_MF_ATTRB_1 = ""
-      V_MF_COLOR_1=""
-      V_MF_HIGHLIGHT_1 = ""
-      V_MF_PICIN_1 =""
-      V_MF_PICOUT_1 = ""
-      V_MF_OCCURS_1= ""
-
-      MF_LINE_POS= QTreeWidgetItem(root_line,["Line-Position"])
-      MF_LINE_POS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-
-
-      MF_LINE_POS.setText(1,self.V_MF_LINE_POS)
-
-      # global MF_LINE_COLUMN
-
-      MF_LINE_COLUMN_1= QTreeWidgetItem(root_line,["Line-Column"])
-      MF_LINE_COLUMN_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_LINE_COLUMN_1.setText(1,V_MF_LINE_COLUMN_1)
-
-      MF_LENGTH_1= QTreeWidgetItem(root_line,["Length"])
-      MF_LENGTH_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_LENGTH_1.setText(1,V_MF_LENGTH_1)
-
-      MF_INIT_1 = QTreeWidgetItem(root_line,["Initialize"])
-      MF_INIT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_INIT_1.setText(1,V_MF_INIT_1)
-
-      MF_JUSTIFY_1= QTreeWidgetItem(root_line,["Justify"])
-      MF_JUSTIFY_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_JUSTIFY_1.setText(1,V_MF_JUSTIFY_1)
-
-      MF_ATTRB_1= QTreeWidgetItem(root_line,["Attribute"])
-      MF_ATTRB_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_ATTRB_1.setText(1,V_MF_ATTRB_1)
-
-      MF_COLOR_1= QTreeWidgetItem(root_line,["Color"])
-      MF_COLOR_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_COLOR_1.setText(1,V_MF_COLOR_1)
-
-      MF_HIGHLIGHT_1= QTreeWidgetItem(root_line,["Highlight"])
-      MF_HIGHLIGHT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_HIGHLIGHT_1.setText(1,V_MF_HIGHLIGHT_1)
-
-      MF_PICIN_1= QTreeWidgetItem(root_line,["PICIN"])
-      MF_PICIN_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_PICIN_1.setText(1,V_MF_PICIN_1)
-
-      MF_PICOUT_1= QTreeWidgetItem(root_line,["PICOUT"])
-      MF_PICOUT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_PICOUT_1.setText(1,V_MF_PICOUT_1)
-
-      MF_OCCURS_1= QTreeWidgetItem(root_line,["OCCURS"])
-      MF_OCCURS_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_OCCURS_1.setText(1,V_MF_OCCURS_1)   
-
-   def set_field_properties_2(self,WIDGET,LINE_NO):
-
-
-      line_no = 'Line : {number}'.format(number = LINE_NO)
-
-      root_line=QTreeWidgetItem(WIDGET,[line_no])
-
-      global MF_LINE_POS
-      global MF_LINE_COLUMN
-      global MF_LENGTH
-      global MF_INIT
-      global MF_JUSTIFY
-      global MF_ATTRB
-      global MF_HIGHLIGHT
-      global MF_COLOR
-      global MF_PICIN
-      global MF_PICOUT
-      global MF_OCCURS
-
-
-      global V_MF_LINE_POS 
-      global V_MF_LINE_COLUMN
-      global V_MF_LENGTH
-      global V_MF_INIT 
-      global V_MF_JUSTIFY
-      global V_MF_ATTRB 
-      global V_MF_COLOR
-      global V_MF_HIGHLIGHT
-      global V_MF_PICIN 
-      global V_MF_PICOUT 
-      global V_MF_OCCURS 
-      global V_MF_LINE_POS 
-      global V_MF_LINE_COLUMN 
-      global V_MF_LENGTH  
-      global V_MF_INIT 
-      global V_MF_JUSTIFY
-      global V_MF_ATTRB
-      global V_MF_COLOR
-      global V_MF_HIGHLIGHT 
-      global V_MF_PICIN 
-      global V_MF_PICOUT
-      global V_MF_OCCURS
-
-      V_MS_TYPE_1="SYS"
-      V_MS_NAME_1 = " ada "
-      V_MS_MODE_1 = ""
-      V_MS_LANG_1 =""
-      V_MS_STORAGE_1 = ""
-      V_MS_CTRL_1 = ""
-      V_MS_TERM_1 = ""
-      V_MS_TIOAPFX_1 = ""
-      V_MS_MAPATTS_1 = ""
-      V_MS_COLOR_1 = ""
-      V_MS_TERM_1 = ""
-      V_MS_HIGHLIGHT_1 = ""
-
-      V_MP_NAME_1=""
-      V_MP_LINE_1 = ""
-      V_MP_SIZE_1 = ""
-      V_MP_COLUMN_1 = ""
-      V_MP_JUSTIFY_1 = ""
-      V_MP_CTRL_1 =""
-      V_MP_TIOAPFX_1 = ""
-      V_MP_COLOR_1 = ""
-      V_MP_HIGHLIGHT_1 = ""
-
-      V_MF_LINE_POS_1 = ""
-      V_MF_LINE_COLUMN_1 = ""
-      V_MF_LENGTH_1 = ""
-      V_MF_INIT_1 = ""
-      V_MF_JUSTIFY_1=""
-      V_MF_ATTRB_1 = ""
-      V_MF_COLOR_1=""
-      V_MF_HIGHLIGHT_1 = ""
-      V_MF_PICIN_1 =""
-      V_MF_PICOUT_1 = ""
-      V_MF_OCCURS_1= ""
-
-      MF_LINE_POS= QTreeWidgetItem(root_line,["Line-Position"])
-      MF_LINE_POS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-
-
-      MF_LINE_POS.setText(1,self.V_MF_LINE_POS)
-
-      # global MF_LINE_COLUMN
-
-      MF_LINE_COLUMN_1= QTreeWidgetItem(root_line,["Line-Column"])
-      MF_LINE_COLUMN_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_LINE_COLUMN_1.setText(1,V_MF_LINE_COLUMN_1)
-
-      MF_LENGTH_1= QTreeWidgetItem(root_line,["Length"])
-      MF_LENGTH_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_LENGTH_1.setText(1,V_MF_LENGTH_1)
-
-      MF_INIT_1 = QTreeWidgetItem(root_line,["Initialize"])
-      MF_INIT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_INIT_1.setText(1,V_MF_INIT_1)
-
-      MF_JUSTIFY_1= QTreeWidgetItem(root_line,["Justify"])
-      MF_JUSTIFY_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_JUSTIFY_1.setText(1,V_MF_JUSTIFY_1)
-
-      MF_ATTRB_1= QTreeWidgetItem(root_line,["Attribute"])
-      MF_ATTRB_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_ATTRB_1.setText(1,V_MF_ATTRB_1)
-
-      MF_COLOR_1= QTreeWidgetItem(root_line,["Color"])
-      MF_COLOR_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_COLOR_1.setText(1,V_MF_COLOR_1)
-
-      MF_HIGHLIGHT_1= QTreeWidgetItem(root_line,["Highlight"])
-      MF_HIGHLIGHT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_HIGHLIGHT_1.setText(1,V_MF_HIGHLIGHT_1)
-
-      MF_PICIN_1= QTreeWidgetItem(root_line,["PICIN"])
-      MF_PICIN_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_PICIN_1.setText(1,V_MF_PICIN_1)
-
-      MF_PICOUT_1= QTreeWidgetItem(root_line,["PICOUT"])
-      MF_PICOUT_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_PICOUT_1.setText(1,V_MF_PICOUT_1)
-
-      MF_OCCURS_1= QTreeWidgetItem(root_line,["OCCURS"])
-      MF_OCCURS_1.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MF_OCCURS_1.setText(1,V_MF_OCCURS_1)   
    
 def main():
+   global linex,linex2
+   linex2 = line.line()
+ 
    linex = line.line()
    app = QApplication(sys.argv)
    read = codegen1.reader('cif.txt')
