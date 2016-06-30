@@ -139,8 +139,8 @@ class line():
 #Set Value of Item Line-Position of Field.
    def set_mf_line_pos(self,field_name):
       self.V_MF_LINE_POS = field_name
-      MF_INIT.setText(1,self.V_MF_LINE_POS)
+      MF_LINE_POS.setText(1,self.V_MF_LINE_POS)
 #Set Value of Item Line-Column of Field
-   def set_mf_init(self,field_name):
+   def set_mf_line_col(self,field_name):
        self.V_MF_LINE_COLUMN = field_name
-       MF_INIT.setText(1,self.V_MF_LINE_COLUMN)
+       MF_LINE_COLUMN.setText(1,self.V_MF_LINE_COLUMN)

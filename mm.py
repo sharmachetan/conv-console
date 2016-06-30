@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
 
       run = QAction(QIcon("D:\work\projects\conv-console\_run_icon"),"Generate Code",self)
 
-      stgg = QAction(QIcon("I:\jectPro\conv-console\stage.bmp"),"Stage Code",self)
+      stgg = QAction(QIcon("D:\work\projects\conv-console\stage.bmp"),"Stage Code",self)
       stg.addAction(stgg)
       stg.actionTriggered[QAction].connect(self.stage_code)
       tb.addAction(run)
@@ -202,6 +202,7 @@ class MainWindow(QMainWindow):
       MS_HIGHLIGHT.setText(1,self.V_MS_HIGHLIGHT)
 
    # list of Map Attributes .
+      global root_map
       root_map=QTreeWidgetItem(root,["Map"])
 
       root_map_def = QTreeWidgetItem(root_map,["Map Definition"])
@@ -267,7 +268,34 @@ class MainWindow(QMainWindow):
 
 
    def stage_code(self):
-       print('code staged')
+      print('code staged')
+      index=[]
+      total_file_lines = read.calculate_lines('cif.txt')
+      print(total_file_lines)
+      line_objects={}
+
+      for x in range(total_file_lines):
+         line_objects[x] = line.line()
+         line_objects[x].set_field_properties(root_map,x)
+         
+         ggg = read.get_element_pos_length(x)
+         eee = read.get_element_name(x)
+         for k,v in (ggg.items()):
+            print(k)
+            line_objects[x].set_mf_line_pos(str(k))
+            line_objects[x].set_mf_line_col(str(k))
+
+            #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
+            string = eee[k]
+            string = str(string)
+            string_len = len(string)
+            new_string =string[2:string_len-2] 
+
+            line_objects[x].set_mf_init(new_string)
+            
+         
+
+
    def pressed_run(self):
       print('print Pressed')
       aa = self.get_mp_highlight()
@@ -512,6 +540,7 @@ def main():
 
    linex = line.line()
    app = QApplication(sys.argv)
+   global read
    read = codegen1.reader('cif.txt')
    # linex.pp()
 
@@ -526,16 +555,15 @@ def main():
    if total_file_lines >80 :
       print("OOPs! Mainframe can't handle more than 80 lines.")
    else:
-
-
-         ggg = read.get_element_pos_length(10)
-
-
-         ex.set_text(MF_LINE_COLUMN,1,str(ggg[16]))
+      ggg = read.get_element_pos_length(10)
 
 
 
-   print(ggg[16])
+   # ex.set_text(MF_LINE_COLUMN,1,str(ggg[16]))
+
+
+
+   # print(ggg[16])
 
 
 
