@@ -17,12 +17,21 @@ class line():
    V_MF_OCCURS = ""
 
 
-   def set_field_properties(self,WIDGET,LINE_NO):
+   def set_line_title(self,LINE_NO):
+      line_no = 'Line : {number}'.format(number = LINE_NO)
+      return line_no
 
 
-	    line_no = 'Line : {number}'.format(number = LINE_NO)
+   def set_field_parent(self,parent,title):
+      parent_item = QTreeWidgetItem(parent,[title])
+      return parent_item
 
-	    root_line=QTreeWidgetItem(WIDGET,[line_no])
+   def set_field_properties(self,LINE_NO,parent):
+
+      #root
+	    
+
+	    root_line=parent
 
 	    global MF_LINE_POS
 	    global MF_LINE_COLUMN

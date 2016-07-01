@@ -3,7 +3,7 @@ $05/23/2016$ $02.26$          $CUSTOMER INFORMATION - TDB$                     $
                                                                                 
 $MAINTENANCE:$ - $(A=ADD, C=CHANGE, S=SHOW, D=DELETE, K=COPY, M=MERGE)$            
 $SCREEN:$                                                                        
-$CUSTOMER NUMBER:$___________________$                                          
+$CUSTOMER NUMBER:$___________________                                          
                                                                                 
       $LAST:$_____                                                               
      $FIRST:$______                                    $DO NOT CALL:$               
