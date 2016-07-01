@@ -284,8 +284,10 @@ class MainWindow(QMainWindow):
 
 
       for x in range(total_file_lines):
-
+         global field_objects
+         field_objects = {}
          line_objects[x] = line.line()
+         keys =[]
 
          title = str(line_objects[x].set_line_title(x))
          par = linex.set_field_parent(root_map,title)
@@ -293,30 +295,51 @@ class MainWindow(QMainWindow):
          ggg = read.get_element_pos_length(x)
          ggg_len = len(ggg)
          eee = read.get_element_name(x)
-         for y in range(ggg_len):
-            line_objects_line[y] = line.line()
-            line_objects_line[y] = line.line()
-            ff = line_objects_line[y].set_field_parent(par,title)
-            line_objects_line[y].set_field_properties(x,ff)
 
-            # print(k)
-            # line_objects[x].set_mf_line_pos(str(k))
-            # line_objects[x].set_mf_line_col(str(k))
+         item_key=[]
+         for k,v in (ggg.items()):
+            item_key.append(k)
+
+         for y in range(ggg_len):
+            obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
+            field_objects[obj_name] = line.line()
+            # line_objects_line[y] = line.line()
+
+            ff = field_objects[obj_name].set_field_parent(par,title)
+            field_objects[obj_name].set_field_properties(x,ff)
+
+            obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
+            field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
+            field_objects[obj_name].set_mf_line_col(str(item_key[y]))
 
             # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
-            # string = eee[k]
-            # string = str(string)
-            # string_len = len(string)
-            # new_string =string[2:string_len-2] 
+            string = eee[item_key[y]]
+            string = str(string)
+            string_len = len(string)
+            new_string =string[2:string_len-2] 
 
-            # line_objects[x].set_mf_init(new_string)
+            field_objects[obj_name].set_mf_init(new_string)
+   
+
+
+
             
-         
+            # for k,v in (ggg.items()):
+            # # print(k)
+            #    z=0
+            #    keys[z] = k
+            #    # line_objects_line[z] = line.line()
+            
+            # field_objects[obj_name].set_mf_line_col(str(keys[y]))
+
+            
+               
 
 
    def pressed_run(self):
       print('print Pressed')
       aa = self.get_mp_highlight()
+
       bb = self.get_mp_name()
       cc = self.get_mp_line()
       d = self.get_mp_size()
@@ -559,16 +582,16 @@ def main():
    linex = line.line()
    app = QApplication(sys.argv)
    global read
-   read = codegen1.reader('cif.txt')
+   read = codegen1.reader('cif2.txt')
    # linex.pp()
 
-   read.file_in_list('cif.txt')
+   read.file_in_list('cif2.txt')
 
 
    ex = MainWindow()
 
 
-   total_file_lines = read.calculate_lines('cif.txt')
+   total_file_lines = read.calculate_lines('cif2.txt')
 
    if total_file_lines >80 :
       print("OOPs! Mainframe can't handle more than 80 lines.")
