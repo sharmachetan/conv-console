@@ -8,6 +8,8 @@ import line
 class MainWindow(QMainWindow):
    count = 0
 
+   
+   field_objects = {}
 
    V_MS_TYPE="SYS"
    V_MS_NAME = " ada "
@@ -284,8 +286,6 @@ class MainWindow(QMainWindow):
 
 
       for x in range(total_file_lines):
-         global field_objects
-         field_objects = {}
          line_objects[x] = line.line()
          keys =[]
 
@@ -302,15 +302,15 @@ class MainWindow(QMainWindow):
 
          for y in range(ggg_len):
             obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
-            field_objects[obj_name] = line.line()
+            self.field_objects[obj_name] = line.line()
             # line_objects_line[y] = line.line()
 
-            ff = field_objects[obj_name].set_field_parent(par,title)
-            field_objects[obj_name].set_field_properties(x,ff)
+            ff = self.field_objects[obj_name].set_field_parent(par,title)
+            self.field_objects[obj_name].set_field_properties(x,ff)
 
             obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
-            field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
-            field_objects[obj_name].set_mf_line_col(str(item_key[y]))
+            self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
+            self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
 
             # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
             string = eee[item_key[y]]
@@ -318,7 +318,7 @@ class MainWindow(QMainWindow):
             string_len = len(string)
             new_string =string[2:string_len-2] 
 
-            field_objects[obj_name].set_mf_init(new_string)
+            self.field_objects[obj_name].set_mf_init(new_string)
    
 
 
@@ -359,7 +359,7 @@ class MainWindow(QMainWindow):
       print(aa)
       print(bb)
       print(cc)
-      print("setting value")
+      print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
       
 
 
@@ -582,16 +582,16 @@ def main():
    linex = line.line()
    app = QApplication(sys.argv)
    global read
-   read = codegen1.reader('cif2.txt')
+   read = codegen1.reader('cif.txt')
    # linex.pp()
 
-   read.file_in_list('cif2.txt')
+   read.file_in_list('cif.txt')
 
 
    ex = MainWindow()
 
 
-   total_file_lines = read.calculate_lines('cif2.txt')
+   total_file_lines = read.calculate_lines('cif.txt')
 
    if total_file_lines >80 :
       print("OOPs! Mainframe can't handle more than 80 lines.")
