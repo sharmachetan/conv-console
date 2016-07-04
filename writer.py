@@ -10,8 +10,11 @@ class writer():
 	def test(self):
 		print("this is writer class")
 
-	def get_mapset(self):
+	def set_property_object_count(self,count):
 		
-		mmm = mm.MainWindow()
-		aa = mmm.set_mslang()
-		print(aa)
+		# mmm = mm.MainWindow()
+		# aa = mmm.get_property_object_count()
+		return count
+
+
+

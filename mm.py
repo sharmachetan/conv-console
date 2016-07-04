@@ -3,6 +3,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import codegen1
 import line
+import writer
 
 
 class MainWindow(QMainWindow):
@@ -360,9 +361,15 @@ class MainWindow(QMainWindow):
       print(bb)
       print(cc)
       print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
+
+
+      ww = writer.writer()
+      ww.set_property_object_count(self.get_property_object_count())
       
 
-
+   def get_property_object_count(self):
+      count = str(len(self.field_objects))
+      return count
 
 #***************************Getters for Map set***********
 
