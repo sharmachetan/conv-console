@@ -272,8 +272,9 @@ class MainWindow(QMainWindow):
 
    def stage_code(self):
       print('code staged')
-      
+
       total_file_lines = read.calculate_lines('cif.txt')
+      print(total_file_lines)
       print(total_file_lines)
       title = "name"
       line_objects = {}

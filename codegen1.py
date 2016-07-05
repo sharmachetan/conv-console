@@ -75,7 +75,7 @@ class reader:
 
 				n=0
 				
-				while (n<16):
+				while (n<=23):
 					feed_line = f.readline()
 					self.file_list.append(feed_line)
 
@@ -181,23 +181,25 @@ class reader:
 	#Return: It return the dictionary containing {pos,length}.
 	#status: Go
 	def get_element_pos_length(self,l_number):
-		element_position={}
-		position_length={} # stores key='Position ' and Value= 'length of element'.
+		try:
+			element_position={}
+			position_length={} # stores key='Position ' and Value= 'length of element'.
 
-		test=self.file_list[l_number]
-		element = self.locate_byte(l_number)
-		element_pos = self.get_dollar_pos(l_number)
+			test=self.file_list[l_number]
+			element = self.locate_byte(l_number)
+			element_pos = self.get_dollar_pos(l_number)
 
-		dollar_list = self.get_dollar_pos(l_number)
-		dollar_count = len(dollar_list)
-		# calculates the length of elements and store in position_length dictionary.
-		for x in range(0,int(dollar_count/2),1):
-			high_k=2*x+1
-			low_k=2*x
-			value=self.get_dollar_pos(l_number)
-			result=(value[high_k]-value[low_k] - 1)
-			position_length[element_pos[2*x]+1] = {result}
-
+			dollar_list = self.get_dollar_pos(l_number)
+			dollar_count = len(dollar_list)
+			# calculates the length of elements and store in position_length dictionary.
+			for x in range(0,int(dollar_count/2),1):
+				high_k=2*x+1
+				low_k=2*x
+				value=self.get_dollar_pos(l_number)
+				result=(value[high_k]-value[low_k] - 1)
+				position_length[element_pos[2*x]+1] = {result}
+		except IndexError:
+			print(" Exception: caught inside get_element_pos_length() ")
 		return position_length
 # Function Finds input value '_' inside the line.
 # uncomment the lines and do the required changes
@@ -340,60 +342,60 @@ class reader:
 	# 	json_str = json.load(json)
 	# 	return print(json_str)
 #-------------------------------------------------------------------------------------------------------
-obj = reader('cif.txt')
-name = obj.name
-op = obj.file_in_list('cif.txt')
-# ct = obj.calculate_lines(name)
-# eg = obj.file_list[6]
-# print(obj.locate_byte(10))
-# mm = memoryview(b'eg')
+# obj = reader('cif.txt')
+# name = obj.name
+# op = obj.file_in_list('cif.txt')
+# # ct = obj.calculate_lines(name)
+# # eg = obj.file_list[6]
+# # print(obj.locate_byte(10))
+# # mm = memoryview(b'eg')
 
-# print(type(eg))
-# print(mm)
-# bb=bytes(mm[1])
-# # print(bb)
+# # print(type(eg))
+# # print(mm)
+# # bb=bytes(mm[1])
+# # # print(bb)
 
-# #This is the way to slice the string. As strings are nothning 
-# #but sequence of characters in python. 
-# print(eg[2])
-# print(ct)
+# # #This is the way to slice the string. As strings are nothning 
+# # #but sequence of characters in python. 
+# # print(eg[2])
+# # print(ct)
 
 
 
-# aaa = obj.get_dollar_pos(11)
-# print("This is dollar funct",aaa)
+# # aaa = obj.get_dollar_pos(11)
+# # print("This is dollar funct",aaa)
 
-# xxx = obj.get_element_pos_length(11)
-# print("This is get_element_pos",xxx)
+# # xxx = obj.get_element_pos_length(11)
+# # print("This is get_element_pos",xxx)
 
-# abc = obj.get_element_prop(0)
-# print("this sis get_element_prop funct",abc)
+# # abc = obj.get_element_prop(0)
+# # print("this sis get_element_prop funct",abc)
 
-obj.get_input_element_length(10)
-# print("this is badass",badas)
-print("**********************************************")
-print("")
-print("")
-ggg = obj.get_element_pos_length(10)
-print("***Element pos-length dic",ggg)
-print("")
-abcd = obj.get_element_name(10)
-print("***this sis get_element_name",abcd)
-print("")
+# obj.get_input_element_length(10)
+# # print("this is badass",badas)
+# print("**********************************************")
+# print("")
+# print("")
+# ggg = obj.get_element_pos_length(10)
+# print("***Element pos-length dic",ggg)
+# print("")
+# abcd = obj.get_element_name(10)
+# print("***this sis get_element_name",abcd)
+# print("")
 
-print("***",obj.input_element_position_length)
+# print("***",obj.input_element_position_length)
 
-rr = obj.calculate_lines(name)
-print("no. of lines",rr)
-try:
-	var=obj.file_list[2]
-	# bfr = buffer(var,1,3)
+# rr = obj.calculate_lines(name)
+# print("no. of lines",rr)
+# try:
+# 	var=obj.file_list[2]
+# 	# bfr = buffer(var,1,3)
 
-	# print(var)
-	# print("buffer is :",bfr)
-except IndexError:
-	print("")
-	print(' ->[ ERROR ] You tried to have more than ')
+# 	# print(var)
+# 	# print("buffer is :",bfr)
+# except IndexError:
+# 	print("")
+# 	print(' ->[ ERROR ] You tried to have more than ')
 
 
 
