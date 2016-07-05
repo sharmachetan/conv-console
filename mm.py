@@ -299,6 +299,35 @@ class MainWindow(QMainWindow):
             ggg_len = len(ggg)
             eee = read.get_element_name(x)
 
+            #Input Fields in Property window.
+            read.get_input_element_length(x)
+            input_fields = read.input_element_position_length 
+
+            input_fields_len  = len(input_fields)
+            print("input",input_fields)
+            print(input_fields_len)
+
+            if (input_fields_len != 0):
+
+
+               input_item_key=[]
+               for k,v in (input_fields.items()):
+                  input_item_key.append(k)
+               
+               print(input_item_key)
+
+               for element in range(input_fields_len):
+                   in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
+                   self.field_objects[in_obj_name] = line.line()
+                   jj = self.field_objects[in_obj_name].set_field_parent(par,title)
+                   self.field_objects[in_obj_name].set_field_properties(x,jj)
+                   in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
+                   self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
+                   self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
+                   self.field_objects[in_obj_name].set_mf_init("Field")
+            else:
+               print("not found")
+
             item_key=[]
             for k,v in (ggg.items()):
                item_key.append(k)
@@ -367,7 +396,7 @@ class MainWindow(QMainWindow):
 
 
       ww = writer.writer()
-      ww.set_property_object_count(self.get_property_object_count())
+      print(ww.set_property_object_count(self.get_property_object_count()))
       
 
    def get_property_object_count(self):
@@ -592,12 +621,15 @@ def main():
    linex = line.line()
    app = QApplication(sys.argv)
    global read
-   read = codegen1.reader('cif3.txt')
+   read = codegen1.reader('cif2.txt')
    # linex.pp()
-
-   read.file_in_list('cif3.txt')
-
-
+   # read.get_input_element_length(1)
+   read.file_in_list('cif2.txt')
+   # ax = read.input_element_position_length(1)
+   # print("this is input element ",ax)
+   rr = read.calculate_lines('cif2.txt')
+   print("no. of lines",rr)
+   print(read.input_element_position_length)
    ex = MainWindow()
 
 

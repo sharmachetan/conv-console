@@ -283,6 +283,8 @@ class reader:
 		return lis
 
 # Records the Start position and Length of the elements.
+	# It input field details inside dictionary 'input_element_position_length'. Here only individual values of a 
+	# single line are stored. This dictionary is global in nature.
 	#Status: Complete
 		
 	def get_input_element_length(self,l_number):
@@ -350,31 +352,31 @@ class reader:
 # obj = reader('cif.txt')
 # name = obj.name
 # op = obj.file_in_list('cif.txt')
-# # ct = obj.calculate_lines(name)
-# # eg = obj.file_list[6]
-# # print(obj.locate_byte(10))
-# # mm = memoryview(b'eg')
+# ct = obj.calculate_lines(name)
+# eg = obj.file_list[6]
+# print(obj.locate_byte(10))
+# mm = memoryview(b'eg')
 
-# # print(type(eg))
-# # print(mm)
-# # bb=bytes(mm[1])
-# # # print(bb)
+# print(type(eg))
+# print(mm)
+# bb=bytes(mm[1])
+# # print(bb)
 
-# # #This is the way to slice the string. As strings are nothning 
-# # #but sequence of characters in python. 
-# # print(eg[2])
-# # print(ct)
+# #This is the way to slice the string. As strings are nothning 
+# #but sequence of characters in python. 
+# print(eg[2])
+# print(ct)
 
 
 
-# # aaa = obj.get_dollar_pos(11)
-# # print("This is dollar funct",aaa)
+# aaa = obj.get_dollar_pos(11)
+# print("This is dollar funct",aaa)
 
-# # xxx = obj.get_element_pos_length(11)
-# # print("This is get_element_pos",xxx)
+# xxx = obj.get_element_pos_length(11)
+# print("This is get_element_pos",xxx)
 
-# # abc = obj.get_element_prop(0)
-# # print("this sis get_element_prop funct",abc)
+# abc = obj.get_element_prop(0)
+# print("this sis get_element_prop funct",abc)
 
 # obj.get_input_element_length(10)
 # # print("this is badass",badas)
@@ -390,6 +392,8 @@ class reader:
 
 # print("***",obj.input_element_position_length)
 
+# print("lenggggg",obj.get_input_element_length(1))
+
 # rr = obj.calculate_lines(name)
 # print("no. of lines",rr)
 # try:
@@ -404,7 +408,7 @@ class reader:
 
 
 
-# Creates a list of lines of File 'f'.
+# # Creates a list of lines of File 'f'.
 
 
 
