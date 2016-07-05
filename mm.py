@@ -319,7 +319,10 @@ class MainWindow(QMainWindow):
                for element in range(input_fields_len):
                    in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
                    self.field_objects[in_obj_name] = line.line()
-                   jj = self.field_objects[in_obj_name].set_field_parent(par,title)
+
+                   field_name = 'Field :{num}'.format(num=element)
+
+                   jj = self.field_objects[in_obj_name].set_field_parent(par,field_name)
                    self.field_objects[in_obj_name].set_field_properties(x,jj)
                    in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
                    self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
@@ -333,11 +336,15 @@ class MainWindow(QMainWindow):
                item_key.append(k)
 
             for y in range(ggg_len):
+               string = eee[item_key[y]]
+               string = str(string)
+               string_len = len(string)
+               new_string =string[2:string_len-2] 
+
                obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
                self.field_objects[obj_name] = line.line()
                # line_objects_line[y] = line.line()
-
-               ff = self.field_objects[obj_name].set_field_parent(par,title)
+               ff = self.field_objects[obj_name].set_field_parent(par,new_string)
                self.field_objects[obj_name].set_field_properties(x,ff)
 
                obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
@@ -345,10 +352,6 @@ class MainWindow(QMainWindow):
                self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
 
                # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
-               string = eee[item_key[y]]
-               string = str(string)
-               string_len = len(string)
-               new_string =string[2:string_len-2] 
 
                self.field_objects[obj_name].set_mf_init(new_string)
       except TypeError:
