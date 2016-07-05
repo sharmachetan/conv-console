@@ -29,7 +29,7 @@ class reader:
 
 # Calculates the no. of lines in a file.
 	def calculate_lines(self,name):
-		EOF = ""
+		EOF = " "
 		
 		for x in open(name,'r'):
 			if (x != EOF):
@@ -39,6 +39,7 @@ class reader:
 			else:
 				return calculate_lines()
 		return self.count
+
 #To get line from the list.
 	def get_line(self,f):
 		line = f.readline()
@@ -69,20 +70,20 @@ class reader:
 
 #Populate the list with file lines.
 	def file_in_list(self,name):
-		
+		lines = self.calculate_lines(name)
 		try:
 			with open(name,'r+') as f:
 
 				n=0
 				
-				while (n<=23):
+				while (n< lines):
 					feed_line = f.readline()
 					self.file_list.append(feed_line)
 
 					n = n+1
 				
-		except IOError:
-			pass
+		except (IOError,IndexError):
+			print("Exception : caught inside file_in_list")
 
 #Byte Identifier.
 #Function extracts word from a line and stores it 
@@ -164,17 +165,21 @@ class reader:
 	def get_element_name(self,l_number):
 		
 		line= self.get_element_pos_length(l_number)		
-		a = self.file_list[l_number]
-		n=0
-		for k,v in line.items():
-			
-			v = list(v)[0]
-			end=k+v
-			start=k
-			name = a[k:end]
-			self.file_element_table[start]={name}
-			n=n+1
-		return self.file_element_table
+
+		try:
+			a = self.file_list[l_number]
+			n=0
+			for k,v in line.items():
+				
+				v = list(v)[0]
+				end=k+v
+				start=k
+				name = a[k:end]
+				self.file_element_table[start]={name}
+				n=n+1
+			return self.file_element_table
+		except IndexError:
+			print("Exception caught inside get_element_name() ")
 
 #Function finds the Position and length of elements in a line .
 	# 'l_number' args is the line number
@@ -198,9 +203,9 @@ class reader:
 				value=self.get_dollar_pos(l_number)
 				result=(value[high_k]-value[low_k] - 1)
 				position_length[element_pos[2*x]+1] = {result}
+			return position_length
 		except IndexError:
 			print(" Exception: caught inside get_element_pos_length() ")
-		return position_length
 # Function Finds input value '_' inside the line.
 # uncomment the lines and do the required changes
 	#Status : complete
