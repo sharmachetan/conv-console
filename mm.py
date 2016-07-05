@@ -328,18 +328,26 @@ class MainWindow(QMainWindow):
                    self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
                    self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
                    self.field_objects[in_obj_name].set_mf_init("Field")
+                   # self.field_objects[in_obj_name].set_mf_length(input_fields[element])
             else:
                print("not found")
 
             item_key=[]
+            item_key_value=[]
             for k,v in (ggg.items()):
                item_key.append(k)
+               item_key_value.append(v)
 
             for y in range(ggg_len):
+               # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
                string = eee[item_key[y]]
                string = str(string)
                string_len = len(string)
                new_string =string[2:string_len-2] 
+               # #Cleaning Item name string before initialization . Getting rid of '{'.
+               value_string = str(item_key_value[y])
+               value_string_len = len(value_string)               
+               new_value_string =value_string[1:value_string_len-1] 
 
                obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
                self.field_objects[obj_name] = line.line()
@@ -351,7 +359,8 @@ class MainWindow(QMainWindow):
                self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
                self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
 
-               # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
+               self.field_objects[obj_name].set_mf_length(new_value_string)
+
 
                self.field_objects[obj_name].set_mf_init(new_string)
       except TypeError:
