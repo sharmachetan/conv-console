@@ -153,3 +153,7 @@ class line():
    def set_mf_line_col(self,field_name):
        self.V_MF_LINE_COLUMN = field_name
        MF_LINE_COLUMN.setText(1,self.V_MF_LINE_COLUMN)
+#Set Value of item Length of Field
+   def set_mf_length(self,field_name):
+             self.V_MF_LENGTH = field_name
+             MF_LENGTH.setText(1,self.V_MF_LENGTH)

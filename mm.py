@@ -332,8 +332,10 @@ class MainWindow(QMainWindow):
                print("not found")
 
             item_key=[]
+            item_key_value=[]
             for k,v in (ggg.items()):
                item_key.append(k)
+               item_key_value.append(v)
 
             for y in range(ggg_len):
                string = eee[item_key[y]]
@@ -350,6 +352,8 @@ class MainWindow(QMainWindow):
                obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
                self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
                self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
+
+               self.field_objects[obj_name].set_mf_length(str(item_key_value[y]))
 
                # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
 
