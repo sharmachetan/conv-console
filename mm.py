@@ -329,6 +329,7 @@ class MainWindow(QMainWindow):
                    self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
                    self.field_objects[in_obj_name].set_mf_init("Field")
                    # self.field_objects[in_obj_name].set_mf_length(input_fields[element])
+                   #thehe
             else:
                print("not found")
 
