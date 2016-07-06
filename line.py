@@ -99,6 +99,10 @@ class line():
       MF_OCCURS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MF_OCCURS.setText(1,self.V_MF_OCCURS)
 
+#Get Values of Item Name of Line field
+   def get_mf_name(self):
+      text = MF_NAME.text(1)
+      return text
 #Get Values of Item Line position of Line field
    def get_mf_line_pos(self):
       text = MF_LINE_POS.text(1)
@@ -130,7 +134,7 @@ class line():
       return text
 #Get Values of Item  line : color
    def get_mf_highlight(self):
-      text = Mf_HIGHLIGHT.text(1)
+      text = MF_HIGHLIGHT.text(1)
       return text
 
 #Get Values of Item Picin of field

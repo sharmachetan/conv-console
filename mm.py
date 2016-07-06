@@ -405,16 +405,82 @@ class MainWindow(QMainWindow):
       print(aa)
       print(bb)
       print(cc)
-      print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
+      # print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
 
 
       ww = writer.writer()
       print(ww.set_property_object_count(self.get_property_object_count()))
+      self.save_file('ccc.txt')
       
+   def save_file(self,file_name):
+      ww = writer.writer()
+      print("this is save file")
+
+      with open(file_name,'w') as file:
+
+         print("This is map set name",self.get_mp_name())
+         # This seciton write MapSet definition code.
+         MapSetName_=self.get_ms_name()
+         Type_= "type"
+         Lang_=self.get_ms_lang()
+         Mode_=self.get_ms_mode()
+         Ctrl_=self.get_ms_ctrl()
+         Tioapfx_=self.get_ms_tioapfx()
+         Term_=self.get_ms_term()
+
+         map_set_asmb_line = '{MapSetName}    DFHMSD  TYPE={Type},LANG={Lang},MODE={Mode},CTRL={Ctrl},TIOAPFX={Tioapfx},TERM={Term}'.format(Term=Term_,Tioapfx=Tioapfx_,Ctrl=Ctrl_,Mode=Mode_,Lang=Lang_,Type=Type_,MapSetName=MapSetName_)
+         file.write(map_set_asmb_line +"\n" )
+
+         #This section write Map definition code.
+         MapName_=self.get_mp_name()
+         MapLine_=self.get_mp_line()
+         MapSize_=self.get_mp_size()
+         MapColumn_=self.get_mp_column()
+         MapJustify_=self.get_mp_justify()
+         MapCtrl_=self.get_mp_ctrl()
+         MapTioapfx_=self.get_mp_tioapfx()
+         MapColor_=self.get_mp_color()
+         MapHighlight_=self.get_mp_highlight()
+
+         map_asmb_line='{MapName}    DFHMDI SIZE=({MapLine}{MapColumn}),LINE={MapLine},COLUMN={MapColumn},JUSTIFY={MapJustify},CTRL={MapCtrl},TIOAPFX={MapTioapfx},COLOR={MapColor},HIGHLIGHT={MapHighlight}'.format(MapName=MapName_,MapLine=MapLine_,MapSize=MapSize_,MapColumn=MapColumn_,MapJustify=MapJustify_,MapColor=MapColor_,MapCtrl=MapCtrl_,MapTioapfx=MapTioapfx_,MapHighlight=MapHighlight_)
+         file.write(map_asmb_line + '\n')
+
+         #This section write MapField code.
+         FieldName_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_name())
+         Length_   = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_length())
+         Init_ =  ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_init())
+         Row_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_line_pos())
+         Col_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_line_column())
+         Attrb_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_attrb())
+
+
+         asmb_line = '{FieldName}       DFHMDF POS={row},{col},LENGTH={Length},ATTRB={Attrb},INITIAL={Init}'.format(FieldName = FieldName_ ,row = Row_,Init = Init_,Length=Length_,col=Col_,Attrb =Attrb_ )
+
+         file.write(asmb_line +"\n" )
+         file.write(asmb_line +"\n" )
+         file.write(asmb_line +"\n" )
+         file.write(asmb_line +"\n" )
+         file.write(asmb_line +"\n" )
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_justify()) +"\n" )
+         # file.write(+"\n" )
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_color()) +"\n" )
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_highlight()) +"\n")
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picin())+"\n" )
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picout())+"\n" )
+         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_occurs()) +"\n" )
+         # for x in (self.field_objects):
+         #    print(self.field_objects[x])
+         #    print(type(x))
+         #    # file.write('********')
+
+
+
+      print('hi')
 
    def get_property_object_count(self):
       count = str(len(self.field_objects))
       return count
+
 
 #***************************Getters for Map set***********
 
@@ -626,6 +692,9 @@ class MainWindow(QMainWindow):
 
 
 
+
+			
+			
 
 def main():
    global linex,linex2

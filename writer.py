@@ -21,11 +21,12 @@ class writer():
 
 
 	def write_ms_type(self,name):
+
 		self.name = name
 		return name
 
-	def write_ms_mode(self):
-		pass
+	def write_ms_mode(self,mode):
+		return mode
 	def write_ms_name(self):
 		pass
 	def write_ms_lang(self,lang):
@@ -67,7 +68,9 @@ class writer():
 		return highlight
 
 	#********************Map Fields**************
+
 	def write_mf_line_pos(self,pos):
+
 		return pos
 	def write_mf_line_col(self,col):
 		return col
@@ -90,6 +93,8 @@ class writer():
 	def write_mf_color(self,color):
 		return color
 	def write_mf_highlight(self,highlight):
-		return highligh
+		
+
+		return highlight
 
 
