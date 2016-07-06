@@ -360,8 +360,14 @@ class MainWindow(QMainWindow):
                self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
                self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
 
+<<<<<<< HEAD
                self.field_objects[obj_name].set_mf_length(new_value_string)
 
+=======
+               self.field_objects[obj_name].set_mf_length(str(item_key_value[y]))
+
+               # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
+>>>>>>> ae7fc52eaa6801d61d3387bd6b78440305fe7670
 
                self.field_objects[obj_name].set_mf_init(new_string)
       except TypeError:

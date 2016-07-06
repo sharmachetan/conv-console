@@ -1,0 +1,24 @@
+$07/04/2016$ $04.06$        $NEW BUSINESS ENTRY - TDB$                         $CV630A$
+                              $(POLICY STATUS)$                                   
+     $MAINT:$   $ADD(A),CHANGE(C),SHOW(S),DELETE(D)$                    $SCREEN:$     
+                                                                                
+ $CAR:$      $GROUP:$         $ST:$      $PRODUCER:$              $EFF DATE:$ __________  
+ $REFNO:$                     $SFX:$ __                                             
+ $UNDERWRITER:$ ___          $DECLINE CD:$ ___          $DCLN DT:$            $FORCE:$  
+                                                                                
+ $INSURED CUSTOMER INFORMATION  CUST ID:$                          $INS%:$          
+  $NAME:$                                                 $PREFERRED MAIL ADDRS:$ __
+ $INS BENFT/MTLY AVG:$  ____________ $ISSUE AGE:$        $RATED AGE:$                 
+  $HEALTH QUESTIONS:$ $1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0$                     
+ $JOINT CUSTOMER INFORMATION$    $CUST ID:$                          $JNT%:$          
+  $NAME:$                                                 $PREFERRED MAIL ADDRS:$ __
+ $INS BENFT/MTLY AVG:$  ____________ $ISSUE AGE:$        $RATED AGE:$                 
+  $HEALTH QUESTIONS:$ $1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0$                     
+ $COVERAGE INFO HOLD CODE:$ ___                       $ABBRV:$     $PROD:$            
+  $PLAN:$ __ $REV:$ ___ $RATE CD:$ _____ $BENEFIT:$               $MAX BEN:$ _____________
+  $PKG#:$ __  $TERM:$ ___ $PREM:$ _________             $LN TM:$ ___ $DEPENDENT CNT:$ __  
+                                                                                
+                                                                                
+ $PF=$                               $LAST MAINT BY:$      $ON:$            $AT:$       
+ $PF1=FRWD PF3=CLEAR  PF5=UNDWRT PF7=ICUST PF9=PDCR  PF11=CORR PF14=PLKUP PF16=DP$
+ $PF2=BKWD PF4=POLDIS PF6=NOTES  PF8=BSRCH PF10=ERRS PF13=SOLC PF15=AGNT  PF17=IS$

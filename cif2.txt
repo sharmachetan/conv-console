@@ -1,0 +1,6 @@
+$06/09/16$  $01.37$     $LOGIC INC. ONLINE PROJECT TRACKER$                 $TC060A$ 
+                           $EMPLOYEE TIME RECORD$                              
+                                                                             
+$EMPLOYEE CYS$       $EMPLOYEE TO BROWSE$ $CYS$       $PROJECT ID TO BROWSE$         
+                                                                             
+$PROJECT$ $DATE$  $TIME$  _____________ $DESCRIPTION$ __________________________$jj$

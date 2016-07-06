@@ -1,0 +1,94 @@
+<mapset macro="DFHMSD">
+	<map-set-name></map-set-name>
+	<type></type>
+	<ctrl></ctrl>
+	<storage></storage>
+	<term></term>
+	<mode></mode>1
+	<tioapfx></tioapfx>
+	<mapatts></mapatts>
+	<lang></lang>
+	<ctrl></ctrl>
+	<color></color>
+	<highlight></highlight>
+
+	<map-def macro="DFHMDI" name ="">
+		
+		<map-size>
+			<map-size-line></map-size-line>
+			<map-size-col></map-size-col>
+		</map-size>
+		<map-column></map-column>
+		<map-justify></map-justify>
+		<map-ctrl></map-ctrl>
+		<map-tioapfx></map-tioapfx>
+		<map-mapatts></map-mapatts>
+		<map-color></map-color>
+
+		
+		<map-field macro="DFHMDF">
+
+			<initialise></initialise>
+			<field-position>
+				<line>10</line>
+				<column></column>
+			</field-position>
+			<field-length></field-length>
+			<field-justify></field-justify>
+			<field-attribute></field-attribute>
+			<highlight></highlight>
+			<color></color>
+			<picin></picin>
+			<picout></picout>
+			<occurs></occurs>
+			
+		</map-field>
+	</map-def>
+</mapset>
+
+
+changs paa- homestay
+pangong- tent
+nubra- homestay
+
+medical kit - 
+clutch cable
+tyre tube
+bulb
+ woolen 
+ thermal wear
+ basic medical kit--extar dymox(altitude sickne) water intake high
+ 2tr coldrink bottle petrol ..
+
+ manali se ek jargaha tandi after rohtang and before shillong
+ taru
+
+
+
+
+in case they dont alow sirf 4 din ke liye chahiye
+
+do not drive after 4pm
+ 1: manali at 4 or 5 am to avoid cross rohtang high traffic
+ 2: klong 
+ 3: jispa first night
+ 4. sarchu 2nd night
+ 5. leh   3rd day
+ 6. take permit at LEh bcoz its military... hotle will help you out...
+ 7 5th day  to nubra via kardungla
+ 6/ 6th day return from nubra
+ 7. 7th day leh to pangong......usse aage ek village hai homestay ke liye
+ 8 8tyh day wapas to leh. (upshi() is triangular LEH MANANI AND PANGONG)
+ 9. we can choose to go psomoriri 
+
+
+
+
+
+
+
+
+
+
+
+
