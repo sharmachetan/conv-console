@@ -274,7 +274,7 @@ class MainWindow(QMainWindow):
       try:
          print('code staged')
 
-         total_file_lines = read.calculate_lines('cif2.txt')
+         total_file_lines = len(read.file_list)
 
          print(total_file_lines)
          title = "name"
@@ -710,13 +710,13 @@ def main():
    read.file_in_list('cif2.txt')
    # ax = read.input_element_position_length(1)
    # print("this is input element ",ax)
-   rr = read.calculate_lines('cif2.txt')
-   print("no. of lines",rr)
+   # rr = read.calculate_lines('cif2.txt')
+   # print("no. of lines",rr)
    print(read.input_element_position_length)
    ex = MainWindow()
 
 
-   total_file_lines = read.calculate_lines('cif2.txt')
+   
 
    # if total_file_lines >24 :
    #    print("OOPs! Mainframe can't handle more than 80 lines.")
