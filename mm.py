@@ -360,11 +360,9 @@ class MainWindow(QMainWindow):
                obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
                self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
                self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
-
                self.field_objects[obj_name].set_mf_length(new_value_string)
-
-
                self.field_objects[obj_name].set_mf_init(new_string)
+
       except TypeError:
             print("Exception : caught inside stage()")
 
@@ -408,6 +406,14 @@ class MainWindow(QMainWindow):
       print(cc)
       # print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
 
+      for k,v  in self.field_objects.items():
+         print('this is ',self.field_objects[k].get_mf_length())
+         print('this is ',self.field_objects[k].get_mf_init())
+         print('this is ',self.field_objects[k].get_mf_line_pos())
+         print('this is ',self.field_objects[k].get_mf_length())
+         self.field_objects[k].get_Gmf_name()
+         print('this is name ',self.field_objects[k].get_mf_name())
+
 
       ww = writer.writer()
       print(ww.set_property_object_count(self.get_property_object_count()))
@@ -433,6 +439,9 @@ class MainWindow(QMainWindow):
          file.write(map_set_asmb_line +"\n" )
 
          #This section write Map definition code.
+
+
+
          MapName_=self.get_mp_name()
          MapLine_=self.get_mp_line()
          MapSize_=self.get_mp_size()
@@ -447,28 +456,35 @@ class MainWindow(QMainWindow):
          file.write(map_asmb_line + '\n')
 
          #This section write MapField code.
-         FieldName_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_name())
-         Length_   = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_length())
-         Init_ =  ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_init())
-         Row_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_line_pos())
-         Col_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_line_column())
-         Attrb_ = ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_attrb())
 
+         print('this is ',)
+         print('this is ',)
+         print('this is ',)
+         print('this is ',)
+         # self.field_objects[k].get_Gmf_name()
+         # print('this is name ',self.field_objects[k].get_mf_name())
 
-         asmb_line = '{FieldName}       DFHMDF POS={row},{col},LENGTH={Length},ATTRB={Attrb},INITIAL={Init}'.format(FieldName = FieldName_ ,row = Row_,Init = Init_,Length=Length_,col=Col_,Attrb =Attrb_ )
+         for k,v  in self.field_objects.items():
+            FieldName_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
+            Length_   = ww.write_mf_line_pos(self.field_objects[k].get_mf_init())
+            Init_ =  ww.write_mf_line_pos(self.field_objects[k].get_mf_line_pos())
+            Row_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
+            Col_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
+            asmb_line = '{FieldName}       DFHMDF POS={row},{col},LENGTH={Length},ATTRB={Attrb},INITIAL={Init}'.format(FieldName = FieldName_ ,row = Row_,Init = Init_,Length=Length_,col=Col_,Attrb ='AA' )
+            file.write(asmb_line +"\n" )
+            print('This is name',self.field_objects[k].get_mf_name())
 
-         file.write(asmb_line +"\n" )
-         file.write(asmb_line +"\n" )
-         file.write(asmb_line +"\n" )
-         file.write(asmb_line +"\n" )
-         file.write(asmb_line +"\n" )
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_justify()) +"\n" )
-         # file.write(+"\n" )
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_color()) +"\n" )
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_highlight()) +"\n")
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picin())+"\n" )
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picout())+"\n" )
-         file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_occurs()) +"\n" )
+         # file.write(asmb_line +"\n" )
+         # file.write(asmb_line +"\n" )
+         # file.write(asmb_line +"\n" )
+         # file.write(asmb_line +"\n" )
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_justify()) +"\n" )
+         # # file.write(+"\n" )
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_color()) +"\n" )
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_highlight()) +"\n")
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picin())+"\n" )
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_picout())+"\n" )
+         # file.write(ww.write_mf_line_pos(self.field_objects['line_object_1_0'].get_mf_occurs()) +"\n" )
          # for x in (self.field_objects):
          #    print(self.field_objects[x])
          #    print(type(x))
@@ -704,10 +720,10 @@ def main():
    linex = line.line()
    app = QApplication(sys.argv)
    global read
-   read = codegen1.reader('cif2.txt')
+   read = codegen1.reader('cif3.txt')
    # linex.pp()
    # read.get_input_element_length(1)
-   read.file_in_list('cif2.txt')
+   read.file_in_list('cif3.txt')
    # ax = read.input_element_position_length(1)
    # print("this is input element ",ax)
    # rr = read.calculate_lines('cif2.txt')

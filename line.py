@@ -99,27 +99,45 @@ class line():
       MF_OCCURS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MF_OCCURS.setText(1,self.V_MF_OCCURS)
 
-#Get Values of Item Name of Line field
-   def get_mf_name(self):
-      text = MF_NAME.text(1)
-      return text
 #Get Values of Item Line position of Line field
    def get_mf_line_pos(self):
-      text = MF_LINE_POS.text(1)
+      # text = MF_LINE_POS.text(1)
+      text = self.V_MF_LINE_POS
       return text
+
+#Get Values of Item Size of length of field
+   def get_mf_length(self):
+      # text = MF_LENGTH.text(1)
+      text = self.V_MF_LENGTH
+      return text
+
+#Get Values of Item Column of Initialize field.
+   def get_mf_init(self):
+      # text = MF_INIT.text(1)
+      text = self.V_MF_INIT
+      return text
+
+
+
+#Get Values From GUI window.
+   def get_Gmf_name(self):
+      text = MF_NAME.text(1)
+      self.V_MF_NAME = text
+
+
+
+
+#Get Values of Item Name of Line field
+   def get_mf_name(self):
+      self.get_Gmf_name()
+      text = self.V_MF_NAME
+      return text
+
 #Get Values of Item Line Column no. of Line Field
    def get_mf_line_column(self):
       text = MF_LINE_COLUMN.text(1)
       return text
 
-#Get Values of Item Size of length of field
-   def get_mf_length(self):
-      text = MF_LENGTH.text(1)
-      return text
-#Get Values of Item Column of Initialize field.
-   def get_mf_init(self):
-      text = MF_INIT.text(1)
-      return text
 #Get Values of Item Ctrl of Justify the field
    def get_mf_justify(self):
       text = MF_JUSTIFY.text(1)
