@@ -10,7 +10,10 @@ class MainWindow(QMainWindow):
    count = 0
 
    
+   filename = ""
    field_objects = {}
+   STAGE_FLAG=False
+   FILE_OPEN_FLAG=False
 
    V_MS_TYPE="SYS"
    V_MS_NAME = " ada "
@@ -18,8 +21,10 @@ class MainWindow(QMainWindow):
    V_MS_LANG =""
    V_MS_STORAGE = ""
    V_MS_CTRL = ""
+  
    V_MS_TERM = ""
    V_MS_TIOAPFX = ""
+   
    V_MS_MAPATTS = ""
    V_MS_COLOR = ""
    V_MS_TERM = ""
@@ -273,98 +278,104 @@ class MainWindow(QMainWindow):
    def stage_code(self):
       try:
          print('code staged')
+         self.STAGE_FLAG
 
-         total_file_lines = len(read.file_list)
+         if (self.FILE_OPEN_FLAG and self.STAGE_FLAG):
+            self.STAGE_FLAG=True
 
-         print(total_file_lines)
-         title = "name"
-         line_objects = {}
-         line_objects_line = {}
+            total_file_lines = len(read.file_list)
 
-         # title = str(linex.set_line_title(10))
-         # par = linex.set_field_parent(root_map,title)
-         # ff = linex.set_field_parent(par,title)
-         # linex.set_field_properties(10,ff)
+            print(total_file_lines)
+            title = "name"
+            line_objects = {}
+            line_objects_line = {}
 
-
-
-         for x in range(total_file_lines):
-            line_objects[x] = line.line()
-            keys =[]
-
-            title = str(line_objects[x].set_line_title(x))
-            par = linex.set_field_parent(root_map,title)
-            
-            ggg = read.get_element_pos_length(x)
-            ggg_len = len(ggg)
-            eee = read.get_element_name(x)
-
-            #Input Fields in Property window.
-            read.get_input_element_length(x)
-            input_fields = read.input_element_position_length 
-
-            input_fields_len  = len(input_fields)
-            print("input",input_fields)
-            print(input_fields_len)
-
-            if (input_fields_len != 0):
+            # title = str(linex.set_line_title(10))
+            # par = linex.set_field_parent(root_map,title)
+            # ff = linex.set_field_parent(par,title)
+            # linex.set_field_properties(10,ff)
 
 
-               input_item_key=[]
-               for k,v in (input_fields.items()):
-                  input_item_key.append(k)
+
+            for x in range(total_file_lines):
+               line_objects[x] = line.line()
+               keys =[]
+
+               title = str(line_objects[x].set_line_title(x))
+               par = linex.set_field_parent(root_map,title)
                
-               print(input_item_key)
+               ggg = read.get_element_pos_length(x)
+               ggg_len = len(ggg)
+               eee = read.get_element_name(x)
 
-               for element in range(input_fields_len):
-                   in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
-                   self.field_objects[in_obj_name] = line.line()
+               #Input Fields in Property window.
+               read.get_input_element_length(x)
+               input_fields = read.input_element_position_length 
 
-                   field_name = 'Field :{num}'.format(num=element)
+               input_fields_len  = len(input_fields)
+               print("input",input_fields)
+               print(input_fields_len)
 
-                   jj = self.field_objects[in_obj_name].set_field_parent(par,field_name)
-                   self.field_objects[in_obj_name].set_field_properties(x,jj)
-                   in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
-                   self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
-                   self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
-                   self.field_objects[in_obj_name].set_mf_init("Field")
-                   self.field_objects[in_obj_name].set_mf_length(str(input_fields[input_item_key[element]]))
-                   # self.field_objects[in_obj_name].set_mf_length(input_fields[element])
-                   #thehe
-            else:
-               print("not found")
+               if (input_fields_len != 0):
 
-            item_key=[]
-            item_key_value=[]
-            for k,v in (ggg.items()):
-               item_key.append(k)
-               item_key_value.append(v)
 
-            for y in range(ggg_len):
-               # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
-               string = eee[item_key[y]]
-               string = str(string)
-               string_len = len(string)
-               new_string =string[2:string_len-2] 
-               # #Cleaning Item name string before initialization . Getting rid of '{'.
-               value_string = str(item_key_value[y])
-               value_string_len = len(value_string)               
-               new_value_string =value_string[1:value_string_len-1] 
+                  input_item_key=[]
+                  for k,v in (input_fields.items()):
+                     input_item_key.append(k)
+                  
+                  print(input_item_key)
 
-               obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
-               self.field_objects[obj_name] = line.line()
-               # line_objects_line[y] = line.line()
-               ff = self.field_objects[obj_name].set_field_parent(par,new_string)
-               self.field_objects[obj_name].set_field_properties(x,ff)
+                  for element in range(input_fields_len):
+                      in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
+                      self.field_objects[in_obj_name] = line.line()
 
-               obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
-               self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
-               self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
-               self.field_objects[obj_name].set_mf_length(new_value_string)
-               self.field_objects[obj_name].set_mf_init(new_string)
+                      field_name = 'Field :{num}'.format(num=element)
 
+                      jj = self.field_objects[in_obj_name].set_field_parent(par,field_name)
+                      self.field_objects[in_obj_name].set_field_properties(x,jj)
+                      in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
+                      self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
+                      self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
+                      self.field_objects[in_obj_name].set_mf_init("Field")
+                      self.field_objects[in_obj_name].set_mf_length(str(input_fields[input_item_key[element]]))
+                      # self.field_objects[in_obj_name].set_mf_length(input_fields[element])
+                      #thehe
+               else:
+                  print("not found")
+
+               item_key=[]
+               item_key_value=[]
+               for k,v in (ggg.items()):
+                  item_key.append(k)
+                  item_key_value.append(v)
+
+               for y in range(ggg_len):
+                  # #Cleaning Item name string before initialization . Getting rid of '{' and " ' " .
+                  string = eee[item_key[y]]
+                  string = str(string)
+                  string_len = len(string)
+                  new_string =string[2:string_len-2] 
+                  # #Cleaning Item name string before initialization . Getting rid of '{'.
+                  value_string = str(item_key_value[y])
+                  value_string_len = len(value_string)               
+                  new_value_string =value_string[1:value_string_len-1] 
+
+                  obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
+                  self.field_objects[obj_name] = line.line()
+                  # line_objects_line[y] = line.line()
+                  ff = self.field_objects[obj_name].set_field_parent(par,new_string)
+                  self.field_objects[obj_name].set_field_properties(x,ff)
+
+                  obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
+                  self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
+                  self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
+                  self.field_objects[obj_name].set_mf_length(new_value_string)
+                  self.field_objects[obj_name].set_mf_init(new_string)
+         else:
+            print("First select file")
+            self.STAGE_FLAG=False
       except TypeError:
-            print("Exception : caught inside stage()")
+         print("Exception : caught inside stage()")
 
 
 
@@ -612,19 +623,23 @@ class MainWindow(QMainWindow):
 
    def open_file(self):
       print("opening file")
-      filename = ""
-      filename = QFileDialog.getOpenFileName(self,'Open File')
+     
+      self.filename = QFileDialog.getOpenFileName(self,'Open File')
+      global read
+      read = codegen1.reader(self.filename)
+      read.file_in_list(self.filename)
 
 
-
-      if filename:
-         with open(filename,"rt") as file:
+      if self.filename:
+         self.FILE_OPEN_FLAG = True
+         self.STAGE_FLAG=True
+         with open(self.filename,"rt") as file:
             text = file.read()
 
       textEdit = QTextEdit()
       open_sub = QMdiSubWindow()
       open_sub.setWidget(textEdit)
-      open_sub.setWindowTitle(filename)
+      open_sub.setWindowTitle(self.filename)
       self.mdi.addSubWindow(open_sub)
       textEdit.setText(text)
       self.mdi.cascadeSubWindows()
@@ -710,8 +725,8 @@ class MainWindow(QMainWindow):
 
 
 
-			
-			
+         
+         
 
 def main():
    global linex,linex2
@@ -719,16 +734,13 @@ def main():
 
    linex = line.line()
    app = QApplication(sys.argv)
-   global read
-   read = codegen1.reader('cif3.txt')
    # linex.pp()
    # read.get_input_element_length(1)
-   read.file_in_list('cif3.txt')
    # ax = read.input_element_position_length(1)
    # print("this is input element ",ax)
    # rr = read.calculate_lines('cif2.txt')
    # print("no. of lines",rr)
-   print(read.input_element_position_length)
+   # print(read.input_element_position_length)
    ex = MainWindow()
 
 
