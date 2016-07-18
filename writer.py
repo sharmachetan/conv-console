@@ -27,8 +27,9 @@ class writer():
 
 	def write_ms_mode(self,mode):
 		return mode
-	def write_ms_name(self):
-		pass
+	def write_ms_name(self,name):
+
+		return name
 	def write_ms_lang(self,lang):
 		return lang
 	def write_ms_storage(self,storage):
@@ -76,6 +77,8 @@ class writer():
 		return col
 	def write_mf_init(self,init):
 		return init
+	def write_mf_length(self,length):
+		return length
 	def write_mf_attr(self,attr):
 		return attr
 	def write_mf_picin(self,picin):

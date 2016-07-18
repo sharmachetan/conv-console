@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
    FILE_OPEN_FLAG=False
 
    V_MS_TYPE="SYS"
-   V_MS_NAME = " ada "
+   V_MS_NAME = "CV"
    V_MS_MODE = ""
    V_MS_LANG =""
    V_MS_STORAGE = ""
@@ -128,6 +128,7 @@ class MainWindow(QMainWindow):
       # if q.text() == "Property Window":
       prop = QDockWidget("Properties",self)
       prop.setFloating(False)
+      self.addDockWidget(Qt.RightDockWidgetArea,prop)
 
       treeWidget = QTreeWidget()
       #    prop.setWidget(QTextEdit())
@@ -146,7 +147,7 @@ class MainWindow(QMainWindow):
 
       global MS_TYPE
       MS_TYPE = QTreeWidgetItem(root_profile,["Type"])
-      MS_TYPE.setCheckState(1,Qt.Checked)
+      MS_TYPE.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_TYPE.setText(1,self.V_MS_TYPE)
 
       global MS_NAME
@@ -414,7 +415,8 @@ class MainWindow(QMainWindow):
       print(d)
       print(aa)
       print(bb)
-      print(cc)
+      print(self.field_objects)
+
       # print("setting value",self.field_objects['line_object_1_0'].get_mf_line_pos())
 
       for k,v  in self.field_objects.items():
@@ -422,8 +424,10 @@ class MainWindow(QMainWindow):
          print('this is ',self.field_objects[k].get_mf_init())
          print('this is ',self.field_objects[k].get_mf_line_pos())
          print('this is ',self.field_objects[k].get_mf_length())
-         self.field_objects[k].get_Gmf_name()
-         print('this is name ',self.field_objects[k].get_mf_name())
+         # print('ran the function',self.field_objects[k].get_mf_name())
+         print('this is value',self.field_objects[k].get_n())
+         # self.field_objects[k].get_Gmf_name()
+         # print('this is name ',self.field_objects[k].get_mf_name())
 
 
       ww = writer.writer()
@@ -446,8 +450,10 @@ class MainWindow(QMainWindow):
          Tioapfx_=self.get_ms_tioapfx()
          Term_=self.get_ms_term()
 
-         map_set_asmb_line = '{MapSetName}    DFHMSD  TYPE={Type},LANG={Lang},MODE={Mode},CTRL={Ctrl},TIOAPFX={Tioapfx},TERM={Term}'.format(Term=Term_,Tioapfx=Tioapfx_,Ctrl=Ctrl_,Mode=Mode_,Lang=Lang_,Type=Type_,MapSetName=MapSetName_)
-         file.write(map_set_asmb_line +"\n" )
+         map_set_asmb_line1 = '{MapSetName}    DFHMSD  TYPE={Type},LANG={Lang},MODE={Mode},CTRL={Ctrl} ,     -'.format(Ctrl=Ctrl_,Mode=Mode_,Lang=Lang_,Type=Type_,MapSetName=MapSetName_)
+         map_set_asmb_line2 = '                       TIOAPFX={Tioapfx},TERM={Term}'.format(Term=Term_,Tioapfx=Tioapfx_)
+         file.write(map_set_asmb_line1 +"\n" )
+         file.write(map_set_asmb_line2 +"\n" )
 
          #This section write Map definition code.
 
@@ -463,8 +469,10 @@ class MainWindow(QMainWindow):
          MapColor_=self.get_mp_color()
          MapHighlight_=self.get_mp_highlight()
 
-         map_asmb_line='{MapName}    DFHMDI SIZE=({MapLine}{MapColumn}),LINE={MapLine},COLUMN={MapColumn},JUSTIFY={MapJustify},CTRL={MapCtrl},TIOAPFX={MapTioapfx},COLOR={MapColor},HIGHLIGHT={MapHighlight}'.format(MapName=MapName_,MapLine=MapLine_,MapSize=MapSize_,MapColumn=MapColumn_,MapJustify=MapJustify_,MapColor=MapColor_,MapCtrl=MapCtrl_,MapTioapfx=MapTioapfx_,MapHighlight=MapHighlight_)
-         file.write(map_asmb_line + '\n')
+         map_asmb_line1='{MapName}    DFHMDI SIZE=({MapLine}{MapColumn}),LINE={MapLine},COLUMN={MapColumn},JUSTIFY={MapJustify},CTRL={MapCtrl},       -'.format(MapName=MapName_,MapLine=MapLine_,MapSize=MapSize_,MapColumn=MapColumn_,MapJustify=MapJustify_,MapCtrl=MapCtrl_)
+         map_asmb_line2='                  TIOAPFX={MapTioapfx},COLOR={MapColor},HIGHLIGHT={MapHighlight}'.format(MapColor=MapColor_,MapTioapfx=MapTioapfx_,MapHighlight=MapHighlight_)
+         file.write(map_asmb_line1 + '\n')
+         file.write(map_asmb_line2 + '\n')
 
          #This section write MapField code.
 
@@ -477,13 +485,15 @@ class MainWindow(QMainWindow):
 
          for k,v  in self.field_objects.items():
             FieldName_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
-            Length_   = ww.write_mf_line_pos(self.field_objects[k].get_mf_init())
-            Init_ =  ww.write_mf_line_pos(self.field_objects[k].get_mf_line_pos())
-            Row_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
-            Col_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
-            asmb_line = '{FieldName}       DFHMDF POS={row},{col},LENGTH={Length},ATTRB={Attrb},INITIAL={Init}'.format(FieldName = FieldName_ ,row = Row_,Init = Init_,Length=Length_,col=Col_,Attrb ='AA' )
-            file.write(asmb_line +"\n" )
-            print('This is name',self.field_objects[k].get_mf_name())
+            Length_   = ww.write_mf_init(self.field_objects[k].get_mf_length())
+            Init_ =  ww.write_mf_init(self.field_objects[k].get_mf_init())
+            Row_ = ww.write_mf_length(self.field_objects[k].get_mf_length())
+            Col_ = ww.write_mf_length(self.field_objects[k].get_mf_length())
+            asmb_line1 = '{FieldName}       DFHMDF POS=({row},{col}),LENGTH={Length},ATTRB={Attrb},   -'.format(FieldName = FieldName_ ,row = Row_,Length=Length_,col=Col_,Attrb ='(ASKIP,NORM)' )
+            asmb_line2 = "                INITIAL='{Init}'".format(Init = Init_ )
+            file.write(asmb_line1 +"\n" )
+            file.write(asmb_line2 +"\n" )
+            # print('This is name',self.field_objects[k].get_mf_name())
 
          # file.write(asmb_line +"\n" )
          # file.write(asmb_line +"\n" )

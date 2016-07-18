@@ -4,6 +4,7 @@ from PyQt4.QtGui import *
 
 class line():
 
+   global MF_NAME
    V_MF_LINE_POS = ""
    V_MF_LINE_COLUMN = ""
    V_MF_LENGTH = ""
@@ -16,6 +17,8 @@ class line():
    V_MF_PICOUT = ""
    V_MF_OCCURS = ""
    V_MF_NAME=""
+
+   name_value= ""
 
 
    def set_line_title(self,LINE_NO):
@@ -30,11 +33,10 @@ class line():
    def set_field_properties(self,LINE_NO,parent):
 
       #root
-	    
+       
 
       root_line=parent
 
-      global MF_NAME
       global MF_LINE_POS
       global MF_LINE_COLUMN
       global MF_LENGTH
@@ -117,56 +119,66 @@ class line():
       text = self.V_MF_INIT
       return text
 
-
-
-#Get Values From GUI window.
-   def get_Gmf_name(self):
+   def get_name(self):
       text = MF_NAME.text(1)
-      self.V_MF_NAME = text
+      return text
 
-
-
-
-#Get Values of Item Name of Line field
    def get_mf_name(self):
-      self.get_Gmf_name()
-      text = self.V_MF_NAME
-      return text
+      self.name_value = MF_NAME.text(1)
+      
+   def get_n(self):
+      return self.name_value
 
-#Get Values of Item Line Column no. of Line Field
-   def get_mf_line_column(self):
-      text = MF_LINE_COLUMN.text(1)
-      return text
 
-#Get Values of Item Ctrl of Justify the field
-   def get_mf_justify(self):
-      text = MF_JUSTIFY.text(1)
-      return text
-#Get Values of Item Justify of attribute of field
-   def get_mf_attrb(self):
-      text = MF_ATTRB.text(1)
-      return text
-#Get Values of Item color of field.
-   def get_mf_color(self):
-      text = MF_COLOR.text(1)
-      return text
-#Get Values of Item  line : color
-   def get_mf_highlight(self):
-      text = MF_HIGHLIGHT.text(1)
-      return text
 
-#Get Values of Item Picin of field
-   def get_mf_picin(self):
-      text = MF_PICIN.text(1)
-      return text
-#Get Values of Item Picout of field
-   def get_mf_picout(self):
-      text = MF_PICOUT.text(1)
-      return text
-#Get Values of Item Occurs of field
-   def get_mf_occurs(self):
-      text = MF_OCCURS.text(1)
-      return text
+# #Get Values From GUI window.
+#    def get_Gmf_name(self):
+#       text = MF_NAME.text(1)
+#       self.V_MF_NAME = text
+
+
+
+
+# #Get Values of Item Name of Line field
+#    def get_mf_name(self):
+#       self.get_Gmf_name()
+#       text = self.V_MF_NAME
+#       return text
+
+# #Get Values of Item Line Column no. of Line Field
+#    def get_mf_line_column(self):
+#       text = MF_LINE_COLUMN.text(1)
+#       return text
+
+# #Get Values of Item Ctrl of Justify the field
+#    def get_mf_justify(self):
+#       text = MF_JUSTIFY.text(1)
+#       return text
+# #Get Values of Item Justify of attribute of field
+#    def get_mf_attrb(self):
+#       text = MF_ATTRB.text(1)
+#       return text
+# #Get Values of Item color of field.
+#    def get_mf_color(self):
+#       text = MF_COLOR.text(1)
+#       return text
+# #Get Values of Item  line : color
+#    def get_mf_highlight(self):
+#       text = MF_HIGHLIGHT.text(1)
+#       return text
+
+# #Get Values of Item Picin of field
+#    def get_mf_picin(self):
+#       text = MF_PICIN.text(1)
+#       return text
+# #Get Values of Item Picout of field
+#    def get_mf_picout(self):
+#       text = MF_PICOUT.text(1)
+#       return text
+# #Get Values of Item Occurs of field
+#    def get_mf_occurs(self):
+#       text = MF_OCCURS.text(1)
+#       return text
 
 #***********************Setters of Field******************
 #Set Values of Item Name of field
