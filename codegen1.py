@@ -164,7 +164,7 @@ class reader:
 	#status: Go
 	def get_element_name(self,l_number):
 		
-		line= self.get_element_pos_length(l_number)		
+		line,line_num= self.get_element_pos_length(l_number)		
 
 		try:
 			a = self.file_list[l_number]
@@ -203,7 +203,7 @@ class reader:
 				value=self.get_dollar_pos(l_number)
 				result=(value[high_k]-value[low_k] - 1)
 				position_length[element_pos[2*x]+1] = {result}
-			return position_length
+			return (position_length,l_number)
 		except IndexError:
 			print(" Exception: caught inside get_element_pos_length() ")
 # Function Finds input value '_' inside the line.

@@ -305,7 +305,8 @@ class MainWindow(QMainWindow):
                title = str(line_objects[x].set_line_title(x))
                par = linex.set_field_parent(root_map,title)
                
-               ggg = read.get_element_pos_length(x)
+               ggg,line_num = read.get_element_pos_length(x)
+               print("----------------checking line num-----------------------------",line_num)
                ggg_len = len(ggg)
                eee = read.get_element_name(x)
 
@@ -335,7 +336,7 @@ class MainWindow(QMainWindow):
                       jj = self.field_objects[in_obj_name].set_field_parent(par,field_name)
                       self.field_objects[in_obj_name].set_field_properties(x,jj)
                       in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
-                      self.field_objects[in_obj_name].set_mf_line_pos(str(input_item_key[element]))
+                      self.field_objects[in_obj_name].set_mf_line_pos(str(line_num))#input_item_key[element]))
                       self.field_objects[in_obj_name].set_mf_line_col(str(input_item_key[element]))
                       self.field_objects[in_obj_name].set_mf_init("Field")
                       self.field_objects[in_obj_name].set_mf_length(str(input_fields[input_item_key[element]]))
@@ -368,7 +369,7 @@ class MainWindow(QMainWindow):
                   self.field_objects[obj_name].set_field_properties(x,ff)
 
                   obj_name = 'line_object_{line}_{field_no}'.format(line=x,field_no=y)
-                  self.field_objects[obj_name].set_mf_line_pos(str(item_key[y]))
+                  self.field_objects[obj_name].set_mf_line_pos(str(line_num))
                   self.field_objects[obj_name].set_mf_line_col(str(item_key[y]))
                   self.field_objects[obj_name].set_mf_length(new_value_string)
                   self.field_objects[obj_name].set_mf_init(new_string)
@@ -484,11 +485,12 @@ class MainWindow(QMainWindow):
          # print('this is name ',self.field_objects[k].get_mf_name())
 
          for k,v  in self.field_objects.items():
-            FieldName_ = ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
+
+            FieldName_ = "Name"#ww.write_mf_line_pos(self.field_objects[k].get_mf_length())
             Length_   = ww.write_mf_init(self.field_objects[k].get_mf_length())
             Init_ =  ww.write_mf_init(self.field_objects[k].get_mf_init())
             Row_ = ww.write_mf_length(self.field_objects[k].get_mf_length())
-            Col_ = ww.write_mf_length(self.field_objects[k].get_mf_length())
+            Col_ = ww.write_mf_length(self.field_objects[k].get_mf_line_pos())
             asmb_line1 = '{FieldName}       DFHMDF POS=({row},{col}),LENGTH={Length},ATTRB={Attrb},   -'.format(FieldName = FieldName_ ,row = Row_,Length=Length_,col=Col_,Attrb ='(ASKIP,NORM)' )
             asmb_line2 = "                INITIAL='{Init}'".format(Init = Init_ )
             file.write(asmb_line1 +"\n" )
