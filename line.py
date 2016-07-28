@@ -135,6 +135,11 @@ class line():
    def get_mf_name(self):
       self.name_value = MF_NAME.text(1)
       
+#Get Values of Item Line Column no. of Line Field
+   def get_mf_line_col(self):
+      text = self.V_MF_LINE_COLUMN
+      return text
+
    def get_n(self):
       return self.name_value
 
@@ -154,10 +159,6 @@ class line():
 #       text = self.V_MF_NAME
 #       return text
 
-# #Get Values of Item Line Column no. of Line Field
-#    def get_mf_line_column(self):
-#       text = MF_LINE_COLUMN.text(1)
-#       return text
 
 # #Get Values of Item Ctrl of Justify the field
 #    def get_mf_justify(self):
