@@ -649,6 +649,10 @@ class MainWindow(QMainWindow):
             text = file.read()
 
       textEdit = QTextEdit()
+
+      #To disable text edit 
+      textEdit.setDisabled(True)
+      
       open_sub = QMdiSubWindow()
       open_sub.setWidget(textEdit)
       open_sub.setWindowTitle(self.filename)
