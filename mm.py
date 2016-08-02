@@ -15,25 +15,25 @@ class MainWindow(QMainWindow):
    STAGE_FLAG=False
    FILE_OPEN_FLAG=False
 
-   V_MS_TYPE="SYS"
-   V_MS_NAME = "CV"
-   V_MS_MODE = ""
-   V_MS_LANG =""
+   V_MS_TYPE="&SYSPARM"
+   V_MS_NAME = "MAPSET"
+   V_MS_MODE = "INOUT"
+   V_MS_LANG ="COBOL"
    V_MS_STORAGE = ""
-   V_MS_CTRL = ""
+   V_MS_CTRL = "FREEKB"
   
-   V_MS_TERM = ""
-   V_MS_TIOAPFX = ""
+   V_MS_TERM = "ALL"
+   V_MS_TIOAPFX = "YES"
    
-   V_MS_MAPATTS = ""
+   V_MS_MAPATTS = "FREEKB"
    V_MS_COLOR = ""
-   V_MS_TERM = ""
-   V_MS_HIGHLIGHT = ""
+   # V_MS_TERM = ""
+   V_MS_HIGHLIGHT = "OFF"
 
-   V_MP_NAME=""
-   V_MP_LINE = ""
-   V_MP_SIZE = ""
-   V_MP_COLUMN = ""
+   V_MP_NAME="MAPNAME"
+   V_MP_LINE = "1"
+   V_MP_SIZE = "(24,80)"
+   V_MP_COLUMN = "1"
    V_MP_JUSTIFY = ""
    V_MP_CTRL =""
    V_MP_TIOAPFX = ""
@@ -175,10 +175,10 @@ class MainWindow(QMainWindow):
       MS_LANG.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MS_LANG.setText(1,self.V_MS_LANG)
 
-      global MS_STORAGE
-      MS_STORAGE= QTreeWidgetItem(root_profile,["Storage"])
-      MS_STORAGE.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MS_STORAGE.setText(1,self.V_MS_STORAGE)
+      # global MS_STORAGE
+      # MS_STORAGE= QTreeWidgetItem(root_profile,["Storage"])
+      # MS_STORAGE.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MS_STORAGE.setText(1,self.V_MS_STORAGE)
 
       global MS_CTRL
       MS_CTRL= QTreeWidgetItem(root_profile,["Ctrl"])
@@ -193,22 +193,23 @@ class MainWindow(QMainWindow):
       global MS_TIOAPFX
       MS_TIOAPFX= QTreeWidgetItem(root_profile,["Tioapfx"])
       MS_TIOAPFX.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
+      MS_TIOAPFX.setText(1,self.V_MS_TIOAPFX)
 
-      global MS_MAPATTS
-      MS_MAPATTS= QTreeWidgetItem(root_profile,["Mapatts"])
-      MS_MAPATTS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MS_MAPATTS.setText(1,self.V_MS_MAPATTS)
+      # global MS_MAPATTS
+      # MS_MAPATTS= QTreeWidgetItem(root_profile,["Mapatts"])
+      # MS_MAPATTS.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MS_MAPATTS.setText(1,self.V_MS_MAPATTS)
 
-      global MS_COLOR
-      MS_COLOR= QTreeWidgetItem(root_profile,["Color"])
-      MS_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MS_COLOR.setText(1,self.V_MS_COLOR)
+      # global MS_COLOR
+      # MS_COLOR= QTreeWidgetItem(root_profile,["Color"])
+      # MS_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MS_COLOR.setText(1,self.V_MS_COLOR)
 
 
-      global MS_HIGHLIGHT
-      MS_HIGHLIGHT= QTreeWidgetItem(root_profile,["Highlight"])
-      MS_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MS_HIGHLIGHT.setText(1,self.V_MS_HIGHLIGHT)
+      # global MS_HIGHLIGHT
+      # MS_HIGHLIGHT= QTreeWidgetItem(root_profile,["Highlight"])
+      # MS_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MS_HIGHLIGHT.setText(1,self.V_MS_HIGHLIGHT)
 
    # list of Map Attributes .
       global root_map

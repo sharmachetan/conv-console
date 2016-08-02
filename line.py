@@ -60,7 +60,7 @@ class line():
 
          # global MF_LINE_COLUMN
 
-      MF_LINE_COLUMN= QTreeWidgetItem(root_line,["Line-Column"])
+      MF_LINE_COLUMN= QTreeWidgetItem(root_line,["Column"])
       MF_LINE_COLUMN.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MF_LINE_COLUMN.setText(1,self.V_MF_LINE_COLUMN)
 
