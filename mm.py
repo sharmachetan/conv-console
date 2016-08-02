@@ -309,6 +309,7 @@ class MainWindow(QMainWindow):
                par = linex.set_field_parent(root_map,title)
                
                ggg,line_num = read.get_element_pos_length(x)
+               line_num = line_num +1
                print("----------------checking line num-----------------------------",line_num)
                ggg_len = len(ggg)
                eee = read.get_element_name(x)
