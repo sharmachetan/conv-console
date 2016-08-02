@@ -288,6 +288,7 @@ class reader:
 	#Status: Complete
 		
 	def get_input_element_length(self,l_number):
+		self.input_element_position_length.clear()
 		strng = self.file_list[l_number]
 		strng = strng.rstrip()	
 		st=[]
@@ -349,9 +350,18 @@ class reader:
 	# 	json_str = json.load(json)
 	# 	return print(json_str)
 #-------------------------------------------------------------------------------------------------------
-# obj = reader('cif.txt')
-# name = obj.name
-# op = obj.file_in_list('cif.txt')
+# obj = reader('xxxxx.txt')
+
+# # name = obj.name
+# op = obj.file_in_list('xxxxx.txt')
+# print(len(obj.file_list))
+# try:
+# 	for x in range(3):
+# 		obj.get_input_element_length(x)
+# 		print(obj.input_element_position_length)
+# 		print(x)
+# except:
+# 	print("caught")
 # ct = obj.calculate_lines(name)
 # eg = obj.file_list[6]
 # print(obj.locate_byte(10))

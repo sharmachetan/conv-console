@@ -286,7 +286,7 @@ class MainWindow(QMainWindow):
 
             total_file_lines = len(read.file_list)
 
-            print(total_file_lines)
+            print("total file lines",total_file_lines)
             title = "name"
             line_objects = {}
             line_objects_line = {}
@@ -299,6 +299,8 @@ class MainWindow(QMainWindow):
 
 
             for x in range(total_file_lines):
+               read.get_input_element_length(x)
+               input_fields = read.input_element_position_length 
                line_objects[x] = line.line()
                keys =[]
 
@@ -311,12 +313,10 @@ class MainWindow(QMainWindow):
                eee = read.get_element_name(x)
 
                #Input Fields in Property window.
-               read.get_input_element_length(x)
-               input_fields = read.input_element_position_length 
 
                input_fields_len  = len(input_fields)
-               print("input",input_fields)
-               print(input_fields_len)
+               # print("input",input_fields)
+               print(input_fields)
 
                if (input_fields_len != 0):
 
@@ -327,6 +327,7 @@ class MainWindow(QMainWindow):
                   
                   print(input_item_key)
 
+# code for input values....
                   for element in range(input_fields_len):
                       in_obj_name = 'line_object_{line}_in{field_no}'.format(line=x,field_no=element)
                       self.field_objects[in_obj_name] = line.line()
