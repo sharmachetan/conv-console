@@ -34,11 +34,11 @@ class MainWindow(QMainWindow):
    V_MP_LINE = "1"
    V_MP_SIZE = "(24,80)"
    V_MP_COLUMN = "1"
-   V_MP_JUSTIFY = ""
+   V_MP_JUSTIFY = "LEFT"
    V_MP_CTRL =""
    V_MP_TIOAPFX = ""
    V_MP_COLOR = ""
-   V_MP_HIGHLIGHT = ""
+   V_MP_HIGHLIGHT = "OFF"
 
    V_MF_LINE_POS = ""
    V_MF_LINE_COLUMN = ""
@@ -241,22 +241,22 @@ class MainWindow(QMainWindow):
       MP_JUSTIFY= QTreeWidgetItem(root_map_def,["Justify"])
       MP_JUSTIFY.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
       MP_JUSTIFY.setText(1,self.V_MP_JUSTIFY)
+#********************Kept for future implimentation*********
+      # global MP_CTRL
+      # MP_CTRL= QTreeWidgetItem(root_map_def,["Ctrl"])
+      # MP_CTRL.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # # MP_CTRL.setText(1,"Default")  CONVERT IN COMBOBOX
 
-      global MP_CTRL
-      MP_CTRL= QTreeWidgetItem(root_map_def,["Ctrl"])
-      MP_CTRL.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      # MP_CTRL.setText(1,"Default")  CONVERT IN COMBOBOX
+      # global MP_TIOAPFX
+      # MP_TIOAPFX= QTreeWidgetItem(root_map_def,["Tioapfx"])
+      # MP_TIOAPFX.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MP_TIOAPFX.setText(1,self.V_MP_TIOAPFX)
 
-      global MP_TIOAPFX
-      MP_TIOAPFX= QTreeWidgetItem(root_map_def,["Tioapfx"])
-      MP_TIOAPFX.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MP_TIOAPFX.setText(1,self.V_MP_TIOAPFX)
-
-      global MP_COLOR
-      MP_COLOR= QTreeWidgetItem(root_map_def,["Color"])
-      MP_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
-      MP_COLOR.setText(1,self.V_MP_COLOR)
-
+      # global MP_COLOR
+      # MP_COLOR= QTreeWidgetItem(root_map_def,["Color"])
+      # MP_COLOR.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
+      # MP_COLOR.setText(1,self.V_MP_COLOR)
+#***************************************************************************
       global MP_HIGHLIGHT
       MP_HIGHLIGHT= QTreeWidgetItem(root_map_def,["Highlight"])
       MP_HIGHLIGHT.setFlags(Qt.ItemIsSelectable| Qt.ItemIsEditable| Qt.ItemIsEnabled)
